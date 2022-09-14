@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var data = Routine()
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Testing")
-        }
-        .padding()
+        TabView{
+            HomeView()
+                .tabItem{
+                    Label("", systemImage: "figure.walk")
+                }
+            
+            ProfileView()
+                .tabItem{
+                    Label("", systemImage: "person.fill")
+                }
+        }.environmentObject(data)
     }
 }
 
