@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var data : Routine
+    @State var show = false
     
     var body: some View{
         NavigationView{

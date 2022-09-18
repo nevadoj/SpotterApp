@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		010B508128D4FED1003FEAD0 /* BottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B508028D4FED1003FEAD0 /* BottomCard.swift */; };
 		010B508328D504C7003FEAD0 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B508228D504C7003FEAD0 /* TestingView.swift */; };
+		010B508728D53003003FEAD0 /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B508628D53003003FEAD0 /* Sheet.swift */; };
 		013F594228D28F62005CC820 /* SpotterAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F594128D28F62005CC820 /* SpotterAppApp.swift */; };
 		013F594428D28F62005CC820 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F594328D28F62005CC820 /* ContentView.swift */; };
 		013F594628D28F63005CC820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 013F594528D28F63005CC820 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		010B508028D4FED1003FEAD0 /* BottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCard.swift; sourceTree = "<group>"; };
 		010B508228D504C7003FEAD0 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
+		010B508628D53003003FEAD0 /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 		013F593E28D28F62005CC820 /* SpotterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		013F594128D28F62005CC820 /* SpotterAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotterAppApp.swift; sourceTree = "<group>"; };
 		013F594328D28F62005CC820 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				013F594128D28F62005CC820 /* SpotterAppApp.swift */,
 				013F594F28D29076005CC820 /* Routine.swift */,
 				013F594328D28F62005CC820 /* ContentView.swift */,
+				010B508628D53003003FEAD0 /* Sheet.swift */,
 				013F594528D28F63005CC820 /* Assets.xcassets */,
 				013F594728D28F63005CC820 /* Preview Content */,
 			);
@@ -163,6 +166,7 @@
 				010B508128D4FED1003FEAD0 /* BottomCard.swift in Sources */,
 				013F595228D29173005CC820 /* HomeView.swift in Sources */,
 				013F595428D2917D005CC820 /* ProfileView.swift in Sources */,
+				010B508728D53003003FEAD0 /* Sheet.swift in Sources */,
 				010B508328D504C7003FEAD0 /* TestingView.swift in Sources */,
 				013F594228D28F62005CC820 /* SpotterAppApp.swift in Sources */,
 				013F595828D29496005CC820 /* ExerciseView.swift in Sources */,
@@ -302,7 +306,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -331,7 +335,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
