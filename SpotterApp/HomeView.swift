@@ -30,9 +30,18 @@ struct HomeView: View {
                                             .foregroundColor(.secondary)
                                     }
                                 }
+                                .onTapGesture {
+                                    show = true
+                                }.sheet(isPresented: $show){
+                                    NavigationStack{
+                                        Text(exercise.name)
+                                            .font(.title)
+                                    }
+                                    .presentationDetents([.medium])
+                                }
                                 .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                     Button(role: .destructive){
-                                        print("Testing")
+                                        Swift.print("Testing")
                                     } label:{
                                         Label("Delete2", systemImage: "trash")
                                     }
