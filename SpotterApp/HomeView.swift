@@ -33,9 +33,14 @@ struct HomeView: View {
                                 .onTapGesture {
                                     show = true
                                 }.sheet(isPresented: $show){
-                                    NavigationStack{
-                                        Text(exercise.name)
-                                            .font(.title)
+//                                    NavigationStack{
+//                                        // Content: show/edit weight, reps, delete?
+//                                        Text("sample")
+//                                            .navigationTitle(exercise.name)
+//                                    }
+                                    NavigationView{
+                                        ExerciseView()
+                                            .navigationTitle(exercise.name)
                                     }
                                     .presentationDetents([.medium])
                                 }
