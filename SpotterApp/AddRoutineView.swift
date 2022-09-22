@@ -11,6 +11,7 @@ struct AddRoutineView: View {
     @EnvironmentObject var data : Routine
     @Environment(\.dismiss) var dismiss
     
+    @State var routineName: String = ""
     @State var newProgram = Program()
     @State var newExercise = Exercise(name: "Bench Press", weight: 125, reps: 5)
     @State var showButton = false
@@ -19,12 +20,21 @@ struct AddRoutineView: View {
         VStack(alignment: .leading){
             Form{
                 Section("Routine Name"){
-                    TextField("Routine Name", text: $newProgram.name)
+                    TextField("Routine Name", text: $routineName)
+                        .onChange(of: routineName){ routineName in
+                            showButton = true
+                            if(routineName.isEmpty){
+                                showButton = false
+                            }
+                            newProgram.name = routineName
+                        }
                 }
-                Button("Done"){
-                    data.addExercise(newProgram, newExercise)
-                    data.addProgram(newProgram)
-                    dismiss()
+                if(showButton){
+                    Button("Done"){
+                        data.addExercise(newProgram, newExercise)
+                        data.addProgram(newProgram)
+                        dismiss()
+                    }
                 }
             }
         }
