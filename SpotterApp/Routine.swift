@@ -18,6 +18,7 @@ struct Exercise : Identifiable, Codable{
 class Program : Identifiable, Codable{
     // Program details
     var name = ""
+    var id = UUID()
     
     // Exercises in program
     var exercises = [Exercise]()
@@ -52,21 +53,23 @@ class Program : Identifiable, Codable{
         }
     }
     
-    func add(_ program : Program){
+    func addProgram(_ program : Program){
         programs.append(program)
         save()
-    }
-    
-    func delete(_ program: Program){
-        // programs.remove
-    }
-    
-    func findProgam(_ program: Program){
-        // return program from program list where program matches UUID
     }
     
     func addExercise(_ program : Program, _ exercise : Exercise){
         program.exercises.append(exercise)
         save()
+    }
+    
+    func deleteProgram(_ program: Program){
+        if let index = programs.firstIndex(where: {$0.id == program.id}){
+            programs.remove(at: index)
+            save()
+        }
+        else{
+            fatalError()
+        }
     }
 }

@@ -39,7 +39,7 @@ struct HomeView: View {
 //                                            .navigationTitle(exercise.name)
 //                                    }
                                     NavigationView{
-                                        ExerciseView()
+                                        ExerciseView(exercise: exercise)
                                             .navigationTitle(exercise.name)
                                     }
                                     .presentationDetents([.medium])
@@ -66,16 +66,15 @@ struct HomeView: View {
                                         .foregroundColor(.secondary)
                                 }
                             }
+                            .contextMenu{
+                                Button(role: .destructive){
+                                    data.deleteProgram(program)
+                                } label: {
+                                    Label("Delete Routine", systemImage: "trash")
+                                }
+                            }
                         }
                     }
-                    
-                    Text("Sample")
-                        .font(.title)
-                        .onLongPressGesture(minimumDuration: 1){
-                            print("Testing")
-                            let impact = UIImpactFeedbackGenerator(style: .medium)
-                            impact.impactOccurred()
-                        }
                 }
             }
             .navigationTitle("Routines")

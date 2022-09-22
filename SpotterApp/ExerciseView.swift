@@ -12,6 +12,8 @@
 import SwiftUI
 
 struct ExerciseView: View {
+    var exercise : Exercise
+    
     var body: some View {
         Text("Hello World!")
     }
@@ -19,7 +21,7 @@ struct ExerciseView: View {
 
 struct ExerciseView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseView()
+        ExerciseView(exercise: Exercise(name: "Bench Press", weight: 145, reps: 8))
     }
 }
 
