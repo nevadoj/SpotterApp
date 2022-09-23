@@ -19,27 +19,12 @@ struct HomeView: View {
                     ForEach(data.programs) { program in
                         DisclosureGroup{
                             ForEach(program.exercises){ exercise in
-                                HStack{
-                                    Text(Image(systemName: "circlebadge"))
-                                    VStack(alignment: .leading){
-                                        Text(exercise.name)
-                                            .font(.callout)
-                                            .fontWeight(.semibold)
-                                        Text("Reps: \(exercise.reps)")
-                                            .font(.footnote)
-                                            .foregroundColor(.secondary)
-                                    }
-                                }
+                                ExerciseItemView(exercise: exercise)
                                 .onTapGesture {
                                     show = true
                                 }.sheet(isPresented: $show){
-//                                    NavigationStack{
-//                                        // Content: show/edit weight, reps, delete?
-//                                        Text("sample")
-//                                            .navigationTitle(exercise.name)
-//                                    }
                                     NavigationView{
-                                        ExerciseView(exercise: exercise)
+                                        ExerciseSheetView(exercise: exercise)
                                             .navigationTitle(exercise.name)
                                     }
                                     .presentationDetents([.medium])
@@ -71,6 +56,13 @@ struct HomeView: View {
                                     data.deleteProgram(program)
                                 } label: {
                                     Label("Delete Routine", systemImage: "trash")
+                                }
+                                
+                                Button(){
+                                    // add exercise
+                                } label:{
+                                    Label("Add Exercise", systemImage:"plus")
+                                        .foregroundColor(.green)
                                 }
                             }
                         }

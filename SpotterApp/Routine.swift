@@ -32,6 +32,11 @@ class Program : Identifiable, Codable{
 
 @MainActor class Routine : ObservableObject {
     @Published private(set) var programs : [Program]
+    
+    var isEmpty: Bool{
+        programs.isEmpty
+    }
+    
     let saveKey = "SavedData"
     
     init(){
