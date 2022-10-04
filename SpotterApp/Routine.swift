@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct Exercise : Identifiable, Codable{
-    var name = "placeholder"
-    var weight = 0.0
-    var reps = 0
-    var id = UUID()
-}
+//struct Exercise : Identifiable, Codable{
+//    var name = "placeholder"
+//    var weight = 0.0
+//    var reps = 0
+//    var id = UUID()
+//}
 
 
 class Program : Identifiable, Codable{
