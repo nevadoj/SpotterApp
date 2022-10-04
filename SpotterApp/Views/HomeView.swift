@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomeView: View {
-    
-    @EnvironmentObject var data : Routine
+    @Environment(\.managedObjectContext) var viewContext
+    @FetchRequest(sortDescriptors: []) var program: FetchedResults<Program>
+
     @State var showExerciseDetails = false
     
     var body: some View{
@@ -71,12 +73,12 @@ struct HomeView: View {
                         }
                     }
                 }
-                .navigationTitle("Routines")
+                .navigationTitle("Programs")
                 .toolbar{
                     ToolbarItem{
                         NavigationLink("Add"){
-                            AddRoutineView()
-                                .navigationTitle("Add Routine")
+                            AddProgramView()
+                                .navigationTitle("Add Program")
                         }
                     }
                 }
@@ -102,7 +104,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environmentObject(Routine())
     }
 }
 

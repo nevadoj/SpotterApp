@@ -19,7 +19,7 @@
 		013F595028D29076005CC820 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F594F28D29076005CC820 /* Routine.swift */; };
 		013F595228D29173005CC820 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F595128D29173005CC820 /* HomeView.swift */; };
 		013F595428D2917D005CC820 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F595328D2917D005CC820 /* ProfileView.swift */; };
-		013F595628D291F8005CC820 /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F595528D291F8005CC820 /* AddRoutineView.swift */; };
+		013F595628D291F8005CC820 /* AddProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F595528D291F8005CC820 /* AddProgramView.swift */; };
 		013F595828D29496005CC820 /* ExerciseSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F595728D29496005CC820 /* ExerciseSheetView.swift */; };
 		0174A51C28DD744B00E92B40 /* ExerciseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */; };
 		01CADFDA28DE8A9900747CFA /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CADFD928DE8A9900747CFA /* AddExerciseView.swift */; };
@@ -39,7 +39,7 @@
 		013F594F28D29076005CC820 /* Routine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		013F595128D29173005CC820 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		013F595328D2917D005CC820 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		013F595528D291F8005CC820 /* AddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
+		013F595528D291F8005CC820 /* AddProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProgramView.swift; sourceTree = "<group>"; };
 		013F595728D29496005CC820 /* ExerciseSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSheetView.swift; sourceTree = "<group>"; };
 		0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemView.swift; sourceTree = "<group>"; };
 		01CADFD928DE8A9900747CFA /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
@@ -59,6 +59,7 @@
 		012C722928ECB25100F740E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				013F594F28D29076005CC820 /* Routine.swift */,
 				012C722B28ECB27900F740E0 /* WorkoutModel.xcdatamodeld */,
 				012C722E28ECB28600F740E0 /* DataController.swift */,
 			);
@@ -68,6 +69,13 @@
 		012C722A28ECB26200F740E0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				013F594328D28F62005CC820 /* ContentView.swift */,
+				013F595728D29496005CC820 /* ExerciseSheetView.swift */,
+				013F595528D291F8005CC820 /* AddProgramView.swift */,
+				013F595128D29173005CC820 /* HomeView.swift */,
+				0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */,
+				01CADFD928DE8A9900747CFA /* AddExerciseView.swift */,
+				013F595328D2917D005CC820 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,14 +104,6 @@
 				012C722928ECB25100F740E0 /* Model */,
 				010B508228D504C7003FEAD0 /* TestingView.swift */,
 				010B508028D4FED1003FEAD0 /* BottomCard.swift */,
-				013F595728D29496005CC820 /* ExerciseSheetView.swift */,
-				013F595528D291F8005CC820 /* AddRoutineView.swift */,
-				013F595128D29173005CC820 /* HomeView.swift */,
-				0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */,
-				01CADFD928DE8A9900747CFA /* AddExerciseView.swift */,
-				013F595328D2917D005CC820 /* ProfileView.swift */,
-				013F594F28D29076005CC820 /* Routine.swift */,
-				013F594328D28F62005CC820 /* ContentView.swift */,
 				010B508628D53003003FEAD0 /* Sheet.swift */,
 				013F594528D28F63005CC820 /* Assets.xcassets */,
 				013F594728D28F63005CC820 /* Preview Content */,
@@ -190,7 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				013F594428D28F62005CC820 /* ContentView.swift in Sources */,
-				013F595628D291F8005CC820 /* AddRoutineView.swift in Sources */,
+				013F595628D291F8005CC820 /* AddProgramView.swift in Sources */,
 				012C722D28ECB27900F740E0 /* WorkoutModel.xcdatamodeld in Sources */,
 				010B508128D4FED1003FEAD0 /* BottomCard.swift in Sources */,
 				013F595228D29173005CC820 /* HomeView.swift in Sources */,
