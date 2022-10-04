@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct SpotterAppApp: App {
+struct SpotterApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

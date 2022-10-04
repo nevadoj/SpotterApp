@@ -10,7 +10,9 @@
 		010B508128D4FED1003FEAD0 /* BottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B508028D4FED1003FEAD0 /* BottomCard.swift */; };
 		010B508328D504C7003FEAD0 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B508228D504C7003FEAD0 /* TestingView.swift */; };
 		010B508728D53003003FEAD0 /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B508628D53003003FEAD0 /* Sheet.swift */; };
-		013F594228D28F62005CC820 /* SpotterAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F594128D28F62005CC820 /* SpotterAppApp.swift */; };
+		012C722D28ECB27900F740E0 /* WorkoutModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 012C722B28ECB27900F740E0 /* WorkoutModel.xcdatamodeld */; };
+		012C722F28ECB28600F740E0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C722E28ECB28600F740E0 /* DataController.swift */; };
+		013F594228D28F62005CC820 /* SpotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F594128D28F62005CC820 /* SpotterApp.swift */; };
 		013F594428D28F62005CC820 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F594328D28F62005CC820 /* ContentView.swift */; };
 		013F594628D28F63005CC820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 013F594528D28F63005CC820 /* Assets.xcassets */; };
 		013F594928D28F63005CC820 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 013F594828D28F63005CC820 /* Preview Assets.xcassets */; };
@@ -20,14 +22,17 @@
 		013F595628D291F8005CC820 /* AddRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F595528D291F8005CC820 /* AddRoutineView.swift */; };
 		013F595828D29496005CC820 /* ExerciseSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F595728D29496005CC820 /* ExerciseSheetView.swift */; };
 		0174A51C28DD744B00E92B40 /* ExerciseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */; };
+		01CADFDA28DE8A9900747CFA /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CADFD928DE8A9900747CFA /* AddExerciseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		010B508028D4FED1003FEAD0 /* BottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCard.swift; sourceTree = "<group>"; };
 		010B508228D504C7003FEAD0 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		010B508628D53003003FEAD0 /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
+		012C722C28ECB27900F740E0 /* WorkoutModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutModel.xcdatamodel; sourceTree = "<group>"; };
+		012C722E28ECB28600F740E0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		013F593E28D28F62005CC820 /* SpotterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		013F594128D28F62005CC820 /* SpotterAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotterAppApp.swift; sourceTree = "<group>"; };
+		013F594128D28F62005CC820 /* SpotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotterApp.swift; sourceTree = "<group>"; };
 		013F594328D28F62005CC820 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		013F594528D28F63005CC820 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		013F594828D28F63005CC820 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -37,6 +42,7 @@
 		013F595528D291F8005CC820 /* AddRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineView.swift; sourceTree = "<group>"; };
 		013F595728D29496005CC820 /* ExerciseSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSheetView.swift; sourceTree = "<group>"; };
 		0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemView.swift; sourceTree = "<group>"; };
+		01CADFD928DE8A9900747CFA /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +56,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		012C722928ECB25100F740E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				012C722B28ECB27900F740E0 /* WorkoutModel.xcdatamodeld */,
+				012C722E28ECB28600F740E0 /* DataController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		012C722A28ECB26200F740E0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		013F593528D28F62005CC820 = {
 			isa = PBXGroup;
 			children = (
@@ -69,14 +91,17 @@
 		013F594028D28F62005CC820 /* SpotterApp */ = {
 			isa = PBXGroup;
 			children = (
+				013F594128D28F62005CC820 /* SpotterApp.swift */,
+				012C722A28ECB26200F740E0 /* Views */,
+				012C722928ECB25100F740E0 /* Model */,
 				010B508228D504C7003FEAD0 /* TestingView.swift */,
 				010B508028D4FED1003FEAD0 /* BottomCard.swift */,
 				013F595728D29496005CC820 /* ExerciseSheetView.swift */,
 				013F595528D291F8005CC820 /* AddRoutineView.swift */,
 				013F595128D29173005CC820 /* HomeView.swift */,
 				0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */,
+				01CADFD928DE8A9900747CFA /* AddExerciseView.swift */,
 				013F595328D2917D005CC820 /* ProfileView.swift */,
-				013F594128D28F62005CC820 /* SpotterAppApp.swift */,
 				013F594F28D29076005CC820 /* Routine.swift */,
 				013F594328D28F62005CC820 /* ContentView.swift */,
 				010B508628D53003003FEAD0 /* Sheet.swift */,
@@ -166,13 +191,16 @@
 			files = (
 				013F594428D28F62005CC820 /* ContentView.swift in Sources */,
 				013F595628D291F8005CC820 /* AddRoutineView.swift in Sources */,
+				012C722D28ECB27900F740E0 /* WorkoutModel.xcdatamodeld in Sources */,
 				010B508128D4FED1003FEAD0 /* BottomCard.swift in Sources */,
 				013F595228D29173005CC820 /* HomeView.swift in Sources */,
+				01CADFDA28DE8A9900747CFA /* AddExerciseView.swift in Sources */,
 				0174A51C28DD744B00E92B40 /* ExerciseItemView.swift in Sources */,
+				012C722F28ECB28600F740E0 /* DataController.swift in Sources */,
 				013F595428D2917D005CC820 /* ProfileView.swift in Sources */,
 				010B508728D53003003FEAD0 /* Sheet.swift in Sources */,
 				010B508328D504C7003FEAD0 /* TestingView.swift in Sources */,
-				013F594228D28F62005CC820 /* SpotterAppApp.swift in Sources */,
+				013F594228D28F62005CC820 /* SpotterApp.swift in Sources */,
 				013F595828D29496005CC820 /* ExerciseSheetView.swift in Sources */,
 				013F595028D29076005CC820 /* Routine.swift in Sources */,
 			);
@@ -375,6 +403,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		012C722B28ECB27900F740E0 /* WorkoutModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				012C722C28ECB27900F740E0 /* WorkoutModel.xcdatamodel */,
+			);
+			currentVersion = 012C722C28ECB27900F740E0 /* WorkoutModel.xcdatamodel */;
+			path = WorkoutModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 013F593628D28F62005CC820 /* Project object */;
 }

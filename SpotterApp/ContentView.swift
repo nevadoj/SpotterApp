@@ -11,10 +11,11 @@ struct ContentView: View {
     @StateObject var data = Routine()
     var body: some View {
         TabView{
+            
             HomeView()
-                .tabItem{
-                    Label("", systemImage: "figure.walk")
-                }
+            .tabItem{
+                Label("", systemImage: "figure.walk")
+            }
             
             ProfileView()
                 .tabItem{
