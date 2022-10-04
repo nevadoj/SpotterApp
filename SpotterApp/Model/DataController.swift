@@ -28,12 +28,34 @@ class DataController: ObservableObject{
         }
     }
     
-    func addExercise(name: String, weight: Double, reps: Int64, context: NSManagedObjectContext){
+    func addExercise(name: String, weight: Double, reps: Int64, program: Program, context: NSManagedObjectContext){
         let newExercise = Exercise(context: context)
         newExercise.id = UUID()
         newExercise.name = name
         newExercise.weight = weight
         newExercise.reps = reps
+        
+        program.exercises?.append(newExercise)
+        
+        save(context: context)
+    }
+    
+    func editExercise(exercise: Exercise, name: String, weight: Double, reps: Int64, context: NSManagedObjectContext){
+        exercise.name = name
+        exercise.weight = weight
+        exercise.reps = reps
+        
+        save(context: context)
+    }
+    
+    func addProgram(name: String, context: NSManagedObjectContext){
+        let newProgram = Program(context: context)
+        
+        save(context: context)
+    }
+    
+    func editProgram(program: Program, name: String, context: NSManagedObjectContext){
+        program.name = name
         
         save(context: context)
     }
