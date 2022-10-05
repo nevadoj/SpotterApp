@@ -19,16 +19,17 @@ struct HomeView: View {
             NavigationView{
                 VStack{
                     List{
-                        ForEach(data.programs) { program in
+                        ForEach(program) { program in
                             DisclosureGroup{
-                                ForEach(program.exercises){ exercise in
+                                // throws error atm because trying to access exercise children without instantiating any
+                                ForEach(program.exercises!){ exercise in
                                     ExerciseItemView(exercise: exercise)
                                     .onTapGesture {
                                         showExerciseDetails = true
                                     }.sheet(isPresented: $showExerciseDetails){
                                         NavigationView{
-                                            ExerciseSheetView(exercise: exercise)
-                                                .navigationTitle(exercise.name)
+                                            ExerciseSheetView()
+                                                .navigationTitle(exercise.name!)
                                         }
                                         .presentationDetents([.medium])
                                     }
@@ -42,7 +43,7 @@ struct HomeView: View {
                                 }
                             } label: {
                                 VStack(alignment: .leading){
-                                    Text(program.name)
+                                    Text(program.name!)
                                         .font(.body)
                                         .fontWeight(.bold)
                                     HStack(alignment: .firstTextBaseline){
@@ -56,7 +57,7 @@ struct HomeView: View {
                                 }
                                 .contextMenu{
                                     Button(role: .destructive){
-                                        data.deleteProgram(program)
+                                        deleteProgram(program)
                                     } label: {
                                         Label("Delete Routine", systemImage: "trash")
                                     }
@@ -97,6 +98,13 @@ struct HomeView: View {
             .clipShape(Circle())
             .shadow(color: .gray.opacity(0.5), radius: 10, x:0, y:0)
             .padding()
+        }
+    }
+    
+    private func deleteProgram(_ program: FetchedResults<Program>.Element){
+        withAnimation{
+            viewContext.delete(program)
+            DataController().save(context: viewContext)
         }
     }
 }

@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var data = Routine()
     var body: some View {
         TabView{
-            
             HomeView()
             .tabItem{
                 Label("", systemImage: "figure.walk")
@@ -21,7 +19,7 @@ struct ContentView: View {
                 .tabItem{
                     Label("", systemImage: "person.fill")
                 }
-        }.environmentObject(data)
+        }
     }
 }
 

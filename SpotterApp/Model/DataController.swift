@@ -50,6 +50,7 @@ class DataController: ObservableObject{
     
     func addProgram(name: String, context: NSManagedObjectContext){
         let newProgram = Program(context: context)
+        newProgram.name = name
         
         save(context: context)
     }

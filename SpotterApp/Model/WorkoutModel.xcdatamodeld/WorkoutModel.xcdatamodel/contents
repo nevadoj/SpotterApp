@@ -7,7 +7,7 @@
         <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Program" representedClassName="Program" syncable="YES" codeGenerationType="class">
-        <attribute name="exercises" optional="YES" attributeType="Transformable" customClassName="[Exercise]"/>
+        <attribute name="exercises" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Exercise]"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="Unknown"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>

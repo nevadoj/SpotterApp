@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		010B508128D4FED1003FEAD0 /* BottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B508028D4FED1003FEAD0 /* BottomCard.swift */; };
-		010B508328D504C7003FEAD0 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B508228D504C7003FEAD0 /* TestingView.swift */; };
 		010B508728D53003003FEAD0 /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B508628D53003003FEAD0 /* Sheet.swift */; };
 		012C722D28ECB27900F740E0 /* WorkoutModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 012C722B28ECB27900F740E0 /* WorkoutModel.xcdatamodeld */; };
 		012C722F28ECB28600F740E0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C722E28ECB28600F740E0 /* DataController.swift */; };
@@ -27,7 +26,6 @@
 
 /* Begin PBXFileReference section */
 		010B508028D4FED1003FEAD0 /* BottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCard.swift; sourceTree = "<group>"; };
-		010B508228D504C7003FEAD0 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		010B508628D53003003FEAD0 /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 		012C722C28ECB27900F740E0 /* WorkoutModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutModel.xcdatamodel; sourceTree = "<group>"; };
 		012C722E28ECB28600F740E0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				013F594128D28F62005CC820 /* SpotterApp.swift */,
 				012C722A28ECB26200F740E0 /* Views */,
 				012C722928ECB25100F740E0 /* Model */,
-				010B508228D504C7003FEAD0 /* TestingView.swift */,
 				010B508028D4FED1003FEAD0 /* BottomCard.swift */,
 				010B508628D53003003FEAD0 /* Sheet.swift */,
 				013F594528D28F63005CC820 /* Assets.xcassets */,
@@ -199,7 +196,6 @@
 				012C722F28ECB28600F740E0 /* DataController.swift in Sources */,
 				013F595428D2917D005CC820 /* ProfileView.swift in Sources */,
 				010B508728D53003003FEAD0 /* Sheet.swift in Sources */,
-				010B508328D504C7003FEAD0 /* TestingView.swift in Sources */,
 				013F594228D28F62005CC820 /* SpotterApp.swift in Sources */,
 				013F595828D29496005CC820 /* ExerciseSheetView.swift in Sources */,
 				013F595028D29076005CC820 /* Routine.swift in Sources */,

@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ExerciseItemView: View {
+    @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.dismiss) var dismiss
     
-    var exercise: Exercise
+    var exercise: FetchedResults<Exercise>.Element
     
     var body: some View {
         HStack{
             Text(Image(systemName: "circlebadge"))
             VStack(alignment: .leading){
-                Text(exercise.name)
+                Text(exercise.name!)
                     .font(.callout)
                     .fontWeight(.semibold)
                 Text("Reps: \(exercise.reps)")
@@ -23,11 +25,5 @@ struct ExerciseItemView: View {
                     .foregroundColor(.secondary)
             }
         }
-    }
-}
-
-struct ExerciseItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExerciseItemView(exercise: Exercise(name: "Bench Press", weight: 145, reps: 5))
     }
 }
