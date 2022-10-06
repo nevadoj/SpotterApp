@@ -36,6 +36,7 @@ class DataController: ObservableObject{
         newExercise.reps = reps
         
         program.exercises?.append(newExercise)
+        program.size += 1
         
         save(context: context)
     }
@@ -51,6 +52,7 @@ class DataController: ObservableObject{
     func addProgram(name: String, context: NSManagedObjectContext){
         let newProgram = Program(context: context)
         newProgram.name = name
+        newProgram.id = UUID()
         
         save(context: context)
     }

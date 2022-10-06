@@ -21,23 +21,25 @@ struct HomeView: View {
                     List{
                         ForEach(program) { program in
                             DisclosureGroup{
-                                // throws error atm because trying to access exercise children without instantiating any
-                                ForEach(program.exercises!){ exercise in
-                                    ExerciseItemView(exercise: exercise)
-                                    .onTapGesture {
-                                        showExerciseDetails = true
-                                    }.sheet(isPresented: $showExerciseDetails){
-                                        NavigationView{
-                                            ExerciseSheetView()
-                                                .navigationTitle(exercise.name!)
+                                // throws error atm because trying to access exercise children but is empty when program first created
+                                if program.size > 0{
+                                    ForEach(program.exercises!){ exercise in
+                                        ExerciseItemView(exercise: exercise)
+                                        .onTapGesture {
+                                            showExerciseDetails = true
+                                        }.sheet(isPresented: $showExerciseDetails){
+                                            NavigationView{
+                                                ExerciseSheetView()
+                                                    .navigationTitle(exercise.name!)
+                                            }
+                                            .presentationDetents([.medium])
                                         }
-                                        .presentationDetents([.medium])
-                                    }
-                                    .swipeActions(edge: .trailing, allowsFullSwipe: false){
-                                        Button(role: .destructive){
-                                            Swift.print("Testing")
-                                        } label:{
-                                            Label("Delete2", systemImage: "trash")
+                                        .swipeActions(edge: .trailing, allowsFullSwipe: false){
+                                            Button(role: .destructive){
+                                                Swift.print("Testing")
+                                            } label:{
+                                                Label("Delete2", systemImage: "trash")
+                                            }
                                         }
                                     }
                                 }
