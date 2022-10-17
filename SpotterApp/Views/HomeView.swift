@@ -13,34 +13,34 @@ struct HomeView: View {
     @FetchRequest(sortDescriptors: []) var program: FetchedResults<Program>
 
     @State var showExerciseDetails = false
+    @State var editProgramDetails = false
     
     var body: some View{
         ZStack(alignment: .bottomTrailing){
             NavigationView{
-                VStack{
-                    List{
+                ScrollView{
+                    VStack{
                         ForEach(program) { program in
                             DisclosureGroup{
-                                // throws error atm because trying to access exercise children but is empty when program first created
                                 if program.size > 0{
                                     ForEach(program.exercises!){ exercise in
                                         ExerciseItemView(exercise: exercise)
-                                        .onTapGesture {
-                                            showExerciseDetails = true
-                                        }.sheet(isPresented: $showExerciseDetails){
-                                            NavigationView{
-                                                ExerciseSheetView()
-                                                    .navigationTitle(exercise.name!)
+                                            .onTapGesture {
+                                                showExerciseDetails = true
+                                            }.sheet(isPresented: $showExerciseDetails){
+                                                NavigationView{
+                                                    ExerciseSheetView()
+                                                        .navigationTitle(exercise.name!)
+                                                }
+                                                .presentationDetents([.medium])
                                             }
-                                            .presentationDetents([.medium])
-                                        }
-                                        .swipeActions(edge: .trailing, allowsFullSwipe: false){
-                                            Button(role: .destructive){
-                                                Swift.print("Testing")
-                                            } label:{
-                                                Label("Delete2", systemImage: "trash")
+                                            .swipeActions(edge: .trailing, allowsFullSwipe: false){
+                                                Button(role: .destructive){
+                                                    Swift.print("Testing")
+                                                } label:{
+                                                    Label("Delete2", systemImage: "trash")
+                                                }
                                             }
-                                        }
                                     }
                                 }
                             } label: {
@@ -48,6 +48,7 @@ struct HomeView: View {
                                     Text(program.name!)
                                         .font(.body)
                                         .fontWeight(.bold)
+                                        .padding(.vertical)
                                     HStack(alignment: .firstTextBaseline){
                                         Text("Working Sets: 12")
                                             .font(.footnote)
@@ -57,49 +58,42 @@ struct HomeView: View {
                                             .foregroundColor(.secondary)
                                     }
                                 }
+                                // Need to find method or re-design a way to edit programs (if a user is wrong the first time, they delete? -- push editing back)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false){
+                                    Button{
+                                        Swift.print("Deleting Program")
+                                    } label:{
+                                        Label("", systemImage: "trash")
+                                    }
+                                    .tint(.red)
+                                }
                                 .contextMenu{
                                     Button(role: .destructive){
                                         deleteProgram(program)
                                     } label: {
                                         Label("Delete Routine", systemImage: "trash")
                                     }
-                                    
-                                    // contextMenu has its own view hierarchy
-//                                    NavigationLink(){
-//                                        AddExerciseView()
-//                                            .navigationTitle("Add Exercise")
-//                                    } label:{
-//                                        Label("Add Exercise", systemImage:"plus")
-//                                    }
                                 }
+                            }
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.green)
+                                .opacity(0.1)
+                            )
+                        }
+                        HStack {
+                            Spacer()
+                            NavigationLink{
+                                AddProgramView()
+                                    .navigationTitle("Add Program")
+                            } label: {
+                                PrimaryButton()
                             }
                         }
                     }
-                }
-                .navigationTitle("Programs")
-                .toolbar{
-                    ToolbarItem{
-                        NavigationLink("Add"){
-                            AddProgramView()
-                                .navigationTitle("Add Program")
-                        }
-                    }
+                    .navigationTitle("Programs")
                 }
             }
-            
-            Button{
-                print("Add Button")
-            } label:{
-                Image(systemName: "plus")
-                    .resizable()
-                    .frame(width: 28, height: 28)
-                    .padding()
-            }
-            .background(Color(.systemBlue))
-            .foregroundColor(.white)
-            .clipShape(Circle())
-            .shadow(color: .gray.opacity(0.5), radius: 10, x:0, y:0)
-            .padding()
         }
     }
     
