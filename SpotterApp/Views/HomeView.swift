@@ -46,17 +46,19 @@ struct HomeView: View {
                                     }
                                 } label: {
                                     VStack(alignment: .leading){
-                                        Text(program.name!)
-                                            .font(.body)
-                                            .fontWeight(.bold)
-                                            .padding(.vertical)
-                                        HStack(alignment: .firstTextBaseline){
-                                            Text("Working Sets: 12")
-                                                .font(.footnote)
-                                                .foregroundColor(.secondary)
-                                            Text("Exercises: \(program.size)")
-                                                .font(.footnote)
-                                                .foregroundColor(.secondary)
+                                        HStack{
+                                            Text(program.name!)
+                                                .font(.body)
+                                                .fontWeight(.bold)
+                                                .padding(.vertical)
+                                            HStack(alignment: .firstTextBaseline){
+                                                Text("Working Sets: 12")
+                                                    .font(.footnote)
+                                                    .foregroundColor(.secondary)
+                                                Text("Exercises: \(program.size)")
+                                                    .font(.footnote)
+                                                    .foregroundColor(.secondary)
+                                            }
                                         }
                                     }
                                     // Need to find method or re-design a way to edit programs (if a user is wrong the first time, they delete? -- push editing back)

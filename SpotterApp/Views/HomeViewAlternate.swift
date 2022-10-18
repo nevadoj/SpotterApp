@@ -10,16 +10,15 @@ import SwiftUI
 struct HomeViewAlternate: View {
     var body: some View {
         VStack{
-            DisclosureGroup("Sample"){
-                Text("Sample text for disclosure group")
+            TitlePanel()
+            ScrollView{
+                
             }
-            .accentColor(.green)
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 20)
-                .fill(Color.green)
-                .opacity(0.1)
-            )
+            .padding(.top, 10)
+            .background(.white)
+            .cornerRadius(30, corners: [.topLeft, .topRight])
         }
+        .background(Color("Background"))
     }
 }
 
