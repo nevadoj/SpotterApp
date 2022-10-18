@@ -15,7 +15,7 @@ struct ContentView: View {
                 Label("", systemImage: "figure.walk")
             }
             
-            ProfileView()
+            HomeViewAlternate()
                 .tabItem{
                     Label("", systemImage: "person.fill")
                 }

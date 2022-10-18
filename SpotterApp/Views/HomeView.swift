@@ -14,13 +14,14 @@ struct HomeView: View {
 
     @State var showExerciseDetails = false
     @State var editProgramDetails = false
+    @State var addExercise = false
     
     var body: some View{
         ZStack(alignment: .bottomTrailing){
             NavigationView{
                 ZStack{
-                    ScrollView{
-                        VStack{
+                    VStack{
+                        List{
                             ForEach(program) { program in
                                 DisclosureGroup{
                                     if program.size > 0{
@@ -33,7 +34,7 @@ struct HomeView: View {
                                                         ExerciseSheetView()
                                                             .navigationTitle(exercise.name!)
                                                     }
-                                                    .presentationDetents([.medium])
+                                                    .presentationDetents([.medium, .large])
                                                 }
                                                 .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                                     Button(role: .destructive){
@@ -44,31 +45,49 @@ struct HomeView: View {
                                                 }
                                         }
                                     }
+                                    else{
+                                        withAnimation{                                        
+                                            HStack{
+                                                VStack(alignment: .leading){
+                                                    Text("No exercises added")
+                                                        .font(.callout)
+                                                        .fontWeight(.semibold)
+                                                        .foregroundColor(.secondary)
+                                                }
+                                            }
+                                        }
+                                    }
                                 } label: {
                                     VStack(alignment: .leading){
-                                        HStack{
-                                            Text(program.name!)
-                                                .font(.body)
-                                                .fontWeight(.bold)
-                                                .padding(.vertical)
-                                            HStack(alignment: .firstTextBaseline){
-                                                Text("Working Sets: 12")
-                                                    .font(.footnote)
-                                                    .foregroundColor(.secondary)
-                                                Text("Exercises: \(program.size)")
-                                                    .font(.footnote)
-                                                    .foregroundColor(.secondary)
-                                            }
+                                        Text(program.name!)
+                                            .font(.body)
+                                            .fontWeight(.bold)
+                                            .padding(.vertical)
+                                        HStack(alignment: .firstTextBaseline){
+                                            Text("Working Sets: 12")
+                                                .font(.footnote)
+                                                .foregroundColor(.secondary)
+                                            Text("Exercises: \(program.size)")
+                                                .font(.footnote)
+                                                .foregroundColor(.secondary)
                                         }
                                     }
                                     // Need to find method or re-design a way to edit programs (if a user is wrong the first time, they delete? -- push editing back)
                                     .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                         Button{
-                                            Swift.print("Deleting Program")
+                                            Swift.print("Add exercise")
+                                            addExercise.toggle()
                                         } label:{
-                                            Label("", systemImage: "trash")
+                                            Label("", systemImage: "plus")
                                         }
-                                        .tint(.red)
+                                        .tint(.green)
+                                    }
+                                    .sheet(isPresented: $addExercise){
+                                        NavigationView{
+                                            AddExerciseView()
+                                                .navigationTitle("Add Exercise")
+                                        }
+                                        .presentationDetents([.medium])
                                     }
                                     .contextMenu{
                                         Button(role: .destructive){
@@ -78,11 +97,6 @@ struct HomeView: View {
                                         }
                                     }
                                 }
-                                .padding()
-                                .background(RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.green)
-                                    .opacity(0.1)
-                                )
                             }
                         }
                         .navigationTitle("Programs")

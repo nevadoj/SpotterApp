@@ -18,7 +18,7 @@ struct HomeViewAlternate: View {
             .background(.white)
             .cornerRadius(30, corners: [.topLeft, .topRight])
         }
-        .background(Color("Background"))
+//        .background(Color("Background"))
     }
 }
 
