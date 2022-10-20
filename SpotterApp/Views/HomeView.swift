@@ -84,7 +84,7 @@ struct HomeView: View {
                                     }
                                     .sheet(isPresented: $addExercise){
                                         NavigationView{
-                                            AddExerciseView()
+                                            AddExerciseView(program: program)
                                                 .navigationTitle("Add Exercise")
                                         }
                                         .presentationDetents([.medium])
