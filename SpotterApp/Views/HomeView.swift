@@ -25,7 +25,8 @@ struct HomeView: View {
                             ForEach(program) { program in
                                 DisclosureGroup{
                                     if program.size > 0{
-                                        ForEach(program.exercises!){ exercise in
+//                                        Array(program.exercises as? Set<Exercise> ?? [])
+                                        ForEach(program.exercises?.array as! [Exercise], id: \.self){ exercise in
                                             ExerciseItemView(exercise: exercise)
                                                 .onTapGesture {
                                                     showExerciseDetails = true
@@ -38,7 +39,7 @@ struct HomeView: View {
                                                 }
                                                 .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                                     Button(role: .destructive){
-                                                        Swift.print("Testing")
+                                                        Swift.print("Testing") // need to add function deleteExercise
                                                     } label:{
                                                         Label("Delete2", systemImage: "trash")
                                                     }
@@ -128,10 +129,10 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView()
+//    }
+//}
 
 

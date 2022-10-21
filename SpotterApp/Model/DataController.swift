@@ -35,12 +35,10 @@ class DataController: ObservableObject{
         newExercise.weight = weight
         newExercise.reps = reps
         newExercise.sets = sets
+        newExercise.program = program
         
-        program.exercises?.append(newExercise)
         program.size += 1
-        
-        print(program.exercises?.count ?? 5)
-        
+
         save(context: context)
     }
     
