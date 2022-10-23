@@ -20,10 +20,20 @@ struct ExerciseItemView: View {
                 Text(exercise.name!)
                     .font(.callout)
                     .fontWeight(.semibold)
-                Text("Reps: \(exercise.reps)")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
+                HStack{
+                    Text("Sets: \(exercise.sets)")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                    Text("Reps: \(exercise.reps)")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
             }
+            Spacer()
+            Text("\(exercise.weight, specifier: "%.1f") lbs")
+                .padding(.trailing)
+                .fontWeight(.semibold)
+                .font(.callout)
         }
     }
 }

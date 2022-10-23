@@ -38,6 +38,7 @@ class DataController: ObservableObject{
         newExercise.program = program
         
         program.size += 1
+        program.working_sets += sets
 
         save(context: context)
     }
@@ -50,11 +51,14 @@ class DataController: ObservableObject{
         save(context: context)
     }
     
+    // todo: deleteExercise
+    
     func addProgram(name: String, context: NSManagedObjectContext){
         let newProgram = Program(context: context)
         newProgram.name = name
         newProgram.id = UUID()
         newProgram.size = 0
+        newProgram.working_sets = 0
         
         save(context: context)
     }

@@ -65,7 +65,7 @@ struct HomeView: View {
                                             .fontWeight(.bold)
                                             .padding(.vertical)
                                         HStack(alignment: .firstTextBaseline){
-                                            Text("Working Sets: 12")
+                                            Text("Working Sets: \(program.working_sets)")
                                                 .font(.footnote)
                                                 .foregroundColor(.secondary)
                                             Text("Exercises: \(program.size)")
