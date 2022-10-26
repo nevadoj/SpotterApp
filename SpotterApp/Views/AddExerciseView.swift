@@ -49,6 +49,7 @@ struct AddExerciseView: View {
                 
                 if(showButton){
                     Button("Done"){
+                        Swift.print("Adding to: \(program.name!)")
                         DataController().addExercise(name: exerciseName, weight: weight, reps: reps, sets: sets, program: program, context: viewContext)
                         dismiss()
                     }

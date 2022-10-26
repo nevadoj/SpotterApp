@@ -16,6 +16,8 @@ class DataController: ObservableObject{
             if let error = error{
                 fatalError("Failed to load the data \(error)")
             }
+            
+            self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         }
     }
     
@@ -59,6 +61,7 @@ class DataController: ObservableObject{
         newProgram.id = UUID()
         newProgram.size = 0
         newProgram.working_sets = 0
+        newProgram.date = Date()
         
         save(context: context)
     }

@@ -10,11 +10,12 @@ import CoreData
 
 struct HomeView: View {
     @Environment(\.managedObjectContext) var viewContext
-    @FetchRequest(sortDescriptors: []) var program: FetchedResults<Program>
-
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var programs: FetchedResults<Program>
+    
     @State var showExerciseDetails = false
     @State var editProgramDetails = false
     @State var addExercise = false
+    @State private var exerciseDisplay: FetchedResults<Exercise>.Element?
     
     var body: some View{
         ZStack(alignment: .bottomTrailing){
@@ -22,24 +23,26 @@ struct HomeView: View {
                 ZStack{
                     VStack{
                         List{
-                            ForEach(program) { program in
+                            ForEach(programs){ program in
                                 DisclosureGroup{
                                     if program.size > 0{
-//                                        Array(program.exercises as? Set<Exercise> ?? [])
+                                        //Array(program.exercises as? Set<Exercise> ?? [])
                                         ForEach(program.exercises?.array as! [Exercise], id: \.self){ exercise in
                                             ExerciseItemView(exercise: exercise)
                                                 .onTapGesture {
-                                                    showExerciseDetails = true
-                                                }.sheet(isPresented: $showExerciseDetails){
+                                                    exerciseDisplay = exercise
+//                                                    showExerciseDetails.toggle()
+                                                }
+                                                .sheet(item: $exerciseDisplay){ exerciseDisplay in
                                                     NavigationView{
-                                                        ExerciseSheetView()
-                                                            .navigationTitle(exercise.name!)
+                                                        ExerciseSheetView()  // Add function works now? -- need to fix sheet view displaying correct exercise
+                                                            .navigationTitle(exerciseDisplay.name!)
                                                     }
                                                     .presentationDetents([.medium, .large])
                                                 }
                                                 .swipeActions(edge: .trailing, allowsFullSwipe: false){
-                                                    Button(role: .destructive){
-                                                        Swift.print("Testing") // need to add function deleteExercise
+                                                    Button(){
+                                                        Swift.print(exercise.name!) // need to add function deleteExercise
                                                     } label:{
                                                         Label("Delete2", systemImage: "trash")
                                                     }
@@ -47,7 +50,7 @@ struct HomeView: View {
                                         }
                                     }
                                     else{
-                                        withAnimation{                                        
+                                        withAnimation{
                                             HStack{
                                                 VStack(alignment: .leading){
                                                     Text("No exercises added")
@@ -76,7 +79,8 @@ struct HomeView: View {
                                     // Need to find method or re-design a way to edit programs (if a user is wrong the first time, they delete? -- push editing back)
                                     .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                         Button{
-                                            Swift.print("Add exercise")
+                                            Swift.print("\(program.name!)")
+                                            Swift.print("\(program.id!)")
                                             addExercise.toggle()
                                         } label:{
                                             Label("", systemImage: "plus")
@@ -99,11 +103,9 @@ struct HomeView: View {
                                     }
                                 }
                             }
-                        }
+                        } // end of List
                         .navigationTitle("Programs")
-                        
                     }
-                    
                     VStack{
                         Spacer()
                         HStack {
