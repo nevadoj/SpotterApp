@@ -27,6 +27,7 @@
 		01C966E828FE7B5400B5B564 /* TitlePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C966E728FE7B5400B5B564 /* TitlePanel.swift */; };
 		01CADFDA28DE8A9900747CFA /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CADFD928DE8A9900747CFA /* AddExerciseView.swift */; };
 		01D81A5128EE9E13002D408A /* ProgramSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D81A5028EE9E13002D408A /* ProgramSheetView.swift */; };
+		01EC58C32918EF380064DEA3 /* ExerciseDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EC58C22918EF380064DEA3 /* ExerciseDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		01C966E728FE7B5400B5B564 /* TitlePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePanel.swift; sourceTree = "<group>"; };
 		01CADFD928DE8A9900747CFA /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		01D81A5028EE9E13002D408A /* ProgramSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramSheetView.swift; sourceTree = "<group>"; };
+		01EC58C22918EF380064DEA3 /* ExerciseDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			children = (
 				012A45BB28FDEB1700737AE1 /* PrimaryButton.swift */,
 				01C966E728FE7B5400B5B564 /* TitlePanel.swift */,
+				01EC58C22918EF380064DEA3 /* ExerciseDetails.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				013F595228D29173005CC820 /* HomeView.swift in Sources */,
 				01CADFDA28DE8A9900747CFA /* AddExerciseView.swift in Sources */,
 				0174A51C28DD744B00E92B40 /* ExerciseItemView.swift in Sources */,
+				01EC58C32918EF380064DEA3 /* ExerciseDetails.swift in Sources */,
 				012C722F28ECB28600F740E0 /* DataController.swift in Sources */,
 				013F595428D2917D005CC820 /* ProfileView.swift in Sources */,
 				010B508728D53003003FEAD0 /* Sheet.swift in Sources */,
@@ -363,6 +367,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -396,6 +401,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

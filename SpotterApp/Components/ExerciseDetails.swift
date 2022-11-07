@@ -1,19 +1,18 @@
 //
-//  ExerciseView.swift
+//  ExerciseDetails.swift
 //  SpotterApp
 //
-//  Created by Joseph Nevado on 2022-09-14.
+//  Created by Joseph Nevado on 2022-11-06.
 //
-
-// Reference swift playgrounds for sending data across views
-// Want to create a view that takes in input and formats the display
-
 
 import SwiftUI
 
-struct ExerciseSheetView: View {
+struct ExerciseDetails: View {
     
-//    var exercise: FetchedResults<Exercise>.Element
+    @State var title: String
+    @State var num: Double
+    
+    //TODO: handle weight input vs reps input for re-usability
     
     var body: some View {
         VStack(alignment: .leading){
@@ -23,7 +22,7 @@ struct ExerciseSheetView: View {
                     .fontWeight(.bold)
                     .padding()
                 Spacer()
-                Text("150 lbs") // on tap - slider which allows user to edit weight
+                Text("\(num, specifier: "%.1f") lbs")
                     .font(.title2)
                     .fontWeight(.bold)
                     .padding()
@@ -40,10 +39,8 @@ struct ExerciseSheetView: View {
     }
 }
 
-struct ExerciseSheetView_Previews: PreviewProvider {
+struct ExerciseDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseSheetView()
+        ExerciseDetails(title: "Weight", num: 150)
     }
 }
-
-

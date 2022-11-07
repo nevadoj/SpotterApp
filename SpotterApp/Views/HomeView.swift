@@ -123,7 +123,7 @@ struct HomeView: View {
         }
     }
     
-    private func deleteProgram(_ program: FetchedResults<Program>.Element){
+    private func deleteProgram(_ program: FetchedResults<Program>.Element){ // crashes the program if press "Add program" after deleting a program
         withAnimation{
             viewContext.delete(program)
             DataController().save(context: viewContext)
