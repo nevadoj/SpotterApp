@@ -17,26 +17,17 @@ struct ExerciseSheetView: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            HStack {
-                Text("Weight")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding()
+            VStack {
+                WeightCard(num: 150)
+                    .onTapGesture {
+                        Swift.print("Testing")
+                }
+                RepsCard(num: 5)
+                
+                // add SwiftCharts here
                 Spacer()
-                Text("150 lbs") // on tap - slider which allows user to edit weight
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding()
             }
         }
-        .frame(height: UIScreen.main.bounds.height / 9)
-        .frame(maxWidth: .infinity)
-        .background(
-            RoundedRectangle(cornerRadius: 30)
-                .fill(Color.white)
-                .shadow(color: .gray.opacity(0.5), radius: 8, x:7, y:8)
-        )
-        .padding()
     }
 }
 

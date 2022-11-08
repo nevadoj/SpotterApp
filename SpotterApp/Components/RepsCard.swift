@@ -1,30 +1,25 @@
 //
-//  ExerciseDetails.swift
+//  RepsCard.swift
 //  SpotterApp
 //
-//  Created by Joseph Nevado on 2022-11-06.
+//  Created by Joseph Nevado on 2022-11-07.
 //
 
 import SwiftUI
 
-struct ExerciseDetails: View {
-    
-    @State var title: String
-    @State var num: Double
-    
-    //TODO: handle weight input vs reps input for re-usability
+struct RepsCard: View {
+    @State var num: Int64
     
     var body: some View {
         VStack(alignment: .leading){
             HStack {
-                Text("Weight")
+                Text("Reps:")
                     .font(.title2)
                     .fontWeight(.bold)
                     .padding()
                 Spacer()
-                Text("\(num, specifier: "%.1f") lbs")
+                Text("\(num) reps")
                     .font(.title2)
-                    .fontWeight(.bold)
                     .padding()
             }
         }
@@ -35,12 +30,13 @@ struct ExerciseDetails: View {
                 .fill(Color.white)
                 .shadow(color: .gray.opacity(0.5), radius: 8, x:7, y:8)
         )
-        .padding()
+        .padding(.horizontal, 25)
+        .padding(.vertical, 5)
     }
 }
 
-struct ExerciseDetails_Previews: PreviewProvider {
+struct RepsCard_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseDetails(title: "Weight", num: 150)
+        RepsCard(num: 5)
     }
 }
