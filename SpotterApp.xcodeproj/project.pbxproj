@@ -25,6 +25,7 @@
 		0146446428FDFD0B009E30F6 /* HomeViewAlternate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146446328FDFD0B009E30F6 /* HomeViewAlternate.swift */; };
 		0174A51C28DD744B00E92B40 /* ExerciseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */; };
 		0193D8AE2919C64800256DC7 /* RepsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0193D8AD2919C64800256DC7 /* RepsCard.swift */; };
+		01B18C7129237EDC00B74666 /* SetsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B18C7029237EDC00B74666 /* SetsCard.swift */; };
 		01C966E828FE7B5400B5B564 /* TitlePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C966E728FE7B5400B5B564 /* TitlePanel.swift */; };
 		01CADFDA28DE8A9900747CFA /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CADFD928DE8A9900747CFA /* AddExerciseView.swift */; };
 		01D81A5128EE9E13002D408A /* ProgramSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D81A5028EE9E13002D408A /* ProgramSheetView.swift */; };
@@ -51,6 +52,7 @@
 		0146446328FDFD0B009E30F6 /* HomeViewAlternate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewAlternate.swift; sourceTree = "<group>"; };
 		0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemView.swift; sourceTree = "<group>"; };
 		0193D8AD2919C64800256DC7 /* RepsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsCard.swift; sourceTree = "<group>"; };
+		01B18C7029237EDC00B74666 /* SetsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsCard.swift; sourceTree = "<group>"; };
 		01C966E728FE7B5400B5B564 /* TitlePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePanel.swift; sourceTree = "<group>"; };
 		01CADFD928DE8A9900747CFA /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		01D81A5028EE9E13002D408A /* ProgramSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramSheetView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				01C966E728FE7B5400B5B564 /* TitlePanel.swift */,
 				01EC58C22918EF380064DEA3 /* WeightCard.swift */,
 				0193D8AD2919C64800256DC7 /* RepsCard.swift */,
+				01B18C7029237EDC00B74666 /* SetsCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				010B508128D4FED1003FEAD0 /* BottomCard.swift in Sources */,
 				013F595228D29173005CC820 /* HomeView.swift in Sources */,
 				01CADFDA28DE8A9900747CFA /* AddExerciseView.swift in Sources */,
+				01B18C7129237EDC00B74666 /* SetsCard.swift in Sources */,
 				0174A51C28DD744B00E92B40 /* ExerciseItemView.swift in Sources */,
 				01EC58C32918EF380064DEA3 /* WeightCard.swift in Sources */,
 				012C722F28ECB28600F740E0 /* DataController.swift in Sources */,

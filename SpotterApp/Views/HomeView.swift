@@ -12,8 +12,6 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var programs: FetchedResults<Program>
     
-    @State var showExerciseDetails = false
-    @State var editProgramDetails = false
     @State var addExercise = false
     @State private var exerciseDisplay: FetchedResults<Exercise>.Element?
     
@@ -31,11 +29,10 @@ struct HomeView: View {
                                             ExerciseItemView(exercise: exercise)
                                                 .onTapGesture {
                                                     exerciseDisplay = exercise
-//                                                    showExerciseDetails.toggle()
                                                 }
                                                 .sheet(item: $exerciseDisplay){ exerciseDisplay in
                                                     NavigationView{
-                                                        ExerciseSheetView()  // Add function works now? -- need to fix sheet view displaying correct exercise
+                                                        ExerciseSheetView(exercise: exerciseDisplay)  // Add function works now? -- need to fix sheet view displaying correct exercise
                                                             .navigationTitle(exerciseDisplay.name!)
                                                     }
                                                     .presentationDetents([.medium, .large])

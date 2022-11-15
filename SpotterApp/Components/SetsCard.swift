@@ -1,24 +1,23 @@
 //
-//  RepsCard.swift
+//  SetsCard.swift
 //  SpotterApp
 //
-//  Created by Joseph Nevado on 2022-11-07.
+//  Created by Joseph Nevado on 2022-11-15.
 //
 
 import SwiftUI
 
-struct RepsCard: View {
+struct SetsCard: View {
     @State var num: Int64
-    
     var body: some View {
         VStack(alignment: .leading){
             VStack {
-                Text("Reps")
+                Text("Sets")
                     .font(.headline)
                     .fontWeight(.bold)
                     .foregroundColor(.secondary)
                     .padding()
-                Text("\(num) reps")
+                Text("\(num) sets")
                     .font(.headline)
                     .fontWeight(.bold)
                     .padding(.bottom, 10)
@@ -36,8 +35,8 @@ struct RepsCard: View {
     }
 }
 
-struct RepsCard_Previews: PreviewProvider {
+struct SetsCard_Previews: PreviewProvider {
     static var previews: some View {
-        RepsCard(num: 5)
+        SetsCard(num: 4)
     }
 }
