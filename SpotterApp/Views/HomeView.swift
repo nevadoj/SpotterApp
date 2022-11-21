@@ -12,9 +12,9 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var programs: FetchedResults<Program>
     
-    @State var addExercise = false
     @State var addProgram = false
     @State private var exerciseDisplay: FetchedResults<Exercise>.Element?
+    @State private var targetProgram: FetchedResults<Program>.Element?
     
     var body: some View{
         ZStack(alignment: .bottomTrailing){
@@ -29,13 +29,6 @@ struct HomeView: View {
                                             ExerciseItemView(exercise: exercise)
                                                 .onTapGesture {
                                                     exerciseDisplay = exercise
-                                                }
-                                                .sheet(item: $exerciseDisplay){ exerciseDisplay in
-                                                    NavigationView{
-                                                        ExerciseSheetView(exercise: exerciseDisplay)
-                                                            .navigationTitle(exerciseDisplay.name!)
-                                                    }
-                                                    .presentationDetents([.medium, .large])
                                                 }
                                                 .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                                     Button(){
@@ -78,18 +71,11 @@ struct HomeView: View {
                                         Button{
                                             Swift.print("\(program.name!)")
                                             Swift.print("\(program.id!)")
-                                            addExercise.toggle()
+                                            targetProgram = program
                                         } label:{
                                             Label("", systemImage: "plus")
                                         }
                                         .tint(.green)
-                                    }
-                                    .sheet(isPresented: $addExercise){
-                                        NavigationView{
-                                            AddExerciseView(program: program)
-                                                .navigationTitle("Add to \(program.name ?? "Program")")
-                                        }
-                                        .presentationDetents([.medium])
                                     }
                                     .contextMenu{
                                         Button(role: .destructive){
@@ -99,9 +85,23 @@ struct HomeView: View {
                                         }
                                     }
                                 }
-                            }
+                            } // end of ForEach
                         } // end of List
                         .navigationTitle("Programs")
+                        .sheet(item: $exerciseDisplay){ exerciseDisplay in
+                            NavigationView{
+                                ExerciseSheetView(exercise: exerciseDisplay)
+                                    .navigationTitle(exerciseDisplay.name!)
+                            }
+                            .presentationDetents([.medium, .large])
+                        }
+                        .sheet(item: $targetProgram){ targetProgram in
+                            NavigationView{
+                                AddExerciseView(program: targetProgram)
+                                    .navigationTitle("Add to \(targetProgram.name ?? "Program")")
+                            }
+                            .presentationDetents([.medium])
+                        }
                     }
                     VStack{
                         Spacer()
