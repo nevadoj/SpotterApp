@@ -13,6 +13,7 @@ struct HomeView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var programs: FetchedResults<Program>
     
     @State var addExercise = false
+    @State var addProgram = false
     @State private var exerciseDisplay: FetchedResults<Exercise>.Element?
     
     var body: some View{
@@ -24,7 +25,6 @@ struct HomeView: View {
                             ForEach(programs){ program in
                                 DisclosureGroup{
                                     if program.size > 0{
-                                        //Array(program.exercises as? Set<Exercise> ?? [])
                                         ForEach(program.exercises?.array as! [Exercise], id: \.self){ exercise in
                                             ExerciseItemView(exercise: exercise)
                                                 .onTapGesture {
@@ -32,7 +32,7 @@ struct HomeView: View {
                                                 }
                                                 .sheet(item: $exerciseDisplay){ exerciseDisplay in
                                                     NavigationView{
-                                                        ExerciseSheetView(exercise: exerciseDisplay)  // Add function works now? -- need to fix sheet view displaying correct exercise
+                                                        ExerciseSheetView(exercise: exerciseDisplay)
                                                             .navigationTitle(exerciseDisplay.name!)
                                                     }
                                                     .presentationDetents([.medium, .large])
@@ -87,7 +87,7 @@ struct HomeView: View {
                                     .sheet(isPresented: $addExercise){
                                         NavigationView{
                                             AddExerciseView(program: program)
-                                                .navigationTitle("Add Exercise")
+                                                .navigationTitle("Add to \(program.name ?? "Program")")
                                         }
                                         .presentationDetents([.medium])
                                     }
@@ -107,12 +107,17 @@ struct HomeView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            NavigationLink{
-                                AddProgramView()
-                                    .navigationTitle("Add Program")
-                            } label: {
-                                PrimaryButton()
-                            }
+                            PrimaryButton()
+                                .onTapGesture {
+                                    addProgram.toggle()
+                                }
+                                .sheet(isPresented: $addProgram){
+                                    NavigationView{
+                                        AddProgramView()
+                                            .navigationTitle("Add Program")
+                                    }
+                                    .presentationDetents([.medium])
+                                }
                         }
                     }
                 }

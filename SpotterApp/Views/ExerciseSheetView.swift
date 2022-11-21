@@ -10,6 +10,9 @@ import SwiftUI
 struct ExerciseSheetView: View {
     
     var exercise: FetchedResults<Exercise>.Element
+    @State private var reps: Int64 = 0
+    @State private var sets: Int64 = 0
+    @State private var weight: Double = 0
     
     var body: some View {
         VStack(alignment: .leading){
@@ -17,9 +20,18 @@ struct ExerciseSheetView: View {
                 WeightCard(num: exercise.weight)
                     .onTapGesture {
                         Swift.print("Testing")
-                }
+                    }
+                    .onAppear{
+                        weight = exercise.weight
+                    }
                 RepsCard(num: exercise.reps)
+                    .onAppear{
+                        reps = exercise.reps
+                    }
                 SetsCard(num: exercise.sets)
+                    .onAppear{
+                        sets = exercise.sets
+                    }
 
                 
             }
