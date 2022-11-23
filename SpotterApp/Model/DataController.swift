@@ -41,14 +41,28 @@ class DataController: ObservableObject{
         
         program.size += 1
         program.working_sets += sets
+        
+        // Attach information for charts
+        let newHistory = History(context: context)
+        newHistory.weights?.append(weight)
+        newHistory.reps?.append(reps)
+        let createdAt = Date()
+        newHistory.dates?.append(createdAt)
+        newExercise.information = newHistory
 
         save(context: context)
     }
     
-    func editExercise(exercise: Exercise, name: String, weight: Double, reps: Int64, context: NSManagedObjectContext){
+    func editExercise(exercise: Exercise, name: String, weight: Double, reps: Int64, sets: Int64, context: NSManagedObjectContext){
         exercise.name = name
         exercise.weight = weight
         exercise.reps = reps
+        exercise.sets = sets
+        
+        exercise.information?.weights?.append(weight)
+        exercise.information?.reps?.append(reps)
+        let updatedAt = Date()
+        exercise.information?.dates?.append(updatedAt)
         
         save(context: context)
     }
