@@ -14,6 +14,14 @@ extension View{
     }
 }
 
+extension Date{
+    func getFormattedDate(format: String) -> String{
+        let dateFormatted = DateFormatter()
+        dateFormatted.dateFormat = format
+        return dateFormatted.string(from: self)
+    }
+}
+
 struct RoundedCorner: Shape{
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners

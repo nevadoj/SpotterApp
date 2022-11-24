@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct ExerciseSheetView: View {
     
@@ -15,7 +16,7 @@ struct ExerciseSheetView: View {
     @State private var weight: Double = 0
     
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading){  // wrap in scrollview?
             HStack {
                 WeightCard(num: exercise.weight)
                     .onTapGesture {
@@ -40,6 +41,14 @@ struct ExerciseSheetView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()
+            
+            Chart(exercise.information?.array as! [History], id:\.self){ history in
+                LineMark(
+                    x: .value("Date", "\(history.date!.getFormattedDate(format: "MMMM yyyy"))"),
+                    y: .value("Weight", history.weight)
+                )
+            }
+            .frame(height: 200)
             Spacer()
         }
     }

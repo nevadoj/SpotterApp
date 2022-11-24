@@ -30,6 +30,18 @@ class DataController: ObservableObject{
         }
     }
     
+    func addHistory(exercise: Exercise, weight: Double, reps: Int64, date: Date, context: NSManagedObjectContext){
+        
+        let newHistory = History(context: context)
+        newHistory.weight = weight
+        newHistory.reps = reps
+        let createdAt = Date()
+        newHistory.date = createdAt
+        newHistory.exercise = exercise
+        
+        save(context: context)
+    }
+    
     func addExercise(name: String, weight: Double, reps: Int64, sets: Int64, program: Program, context: NSManagedObjectContext){
         let newExercise = Exercise(context: context)
         newExercise.id = UUID()
@@ -43,15 +55,12 @@ class DataController: ObservableObject{
         program.working_sets += sets
         
         // Attach information for charts
-        let newHistory = History(context: context)
-        newHistory.weights?.append(weight)
-        newHistory.reps?.append(reps)
         let createdAt = Date()
-        newHistory.dates?.append(createdAt)
-        newExercise.information = newHistory
+        addHistory(exercise: newExercise, weight: weight, reps: reps, date: createdAt, context: context)
 
         save(context: context)
     }
+    
     
     func editExercise(exercise: Exercise, name: String, weight: Double, reps: Int64, sets: Int64, context: NSManagedObjectContext){
         exercise.name = name
@@ -59,10 +68,8 @@ class DataController: ObservableObject{
         exercise.reps = reps
         exercise.sets = sets
         
-        exercise.information?.weights?.append(weight)
-        exercise.information?.reps?.append(reps)
         let updatedAt = Date()
-        exercise.information?.dates?.append(updatedAt)
+        addHistory(exercise: exercise, weight: weight, reps: reps, date: updatedAt, context: context)
         
         save(context: context)
     }
