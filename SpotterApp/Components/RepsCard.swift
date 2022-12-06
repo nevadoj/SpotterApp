@@ -29,9 +29,9 @@ struct RepsCard: View {
         .background(
             RoundedRectangle(cornerRadius: 30)
                 .fill(Color.white)
-                .shadow(color: .gray.opacity(0.5), radius: 8, x:7, y:8)
+                .shadow(color: .gray.opacity(0.5), radius: 8, x:3, y:6)
         )
-        .padding(.horizontal, 8)
+        .padding(.horizontal, 5)
         .padding(.vertical, 10)
     }
 }

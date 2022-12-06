@@ -18,25 +18,27 @@ struct ExerciseSheetView: View {
     var body: some View {
         ScrollView{
             VStack(alignment: .leading){  // wrap in scrollview?
-                HStack {
-                    WeightCard(num: exercise.weight)
-                        .onTapGesture {
-                            Swift.print("Testing")
-                        }
-                        .onAppear{
-                            weight = exercise.weight
-                        }
-                    RepsCard(num: exercise.reps)
-                        .onAppear{
-                            reps = exercise.reps
-                        }
-                    SetsCard(num: exercise.sets)
-                        .onAppear{
-                            sets = exercise.sets
-                        }
-                    
-                    
-                }
+                ScrollView(.horizontal, content:{
+                    HStack {
+                        WeightCard(num: exercise.weight)
+                            .onTapGesture {
+                                Swift.print("Testing")
+                            }
+                            .onAppear{
+                                weight = exercise.weight
+                            }
+                        //                        RepsCard(num: exercise.reps)
+                        //                            .onAppear{
+                        //                                reps = exercise.reps
+                        //                            }
+                        //                        SetsCard(num: exercise.sets)
+                        //                            .onAppear{
+                        //                                sets = exercise.sets
+                        //                            }
+                    }
+                })
+                .padding()
+                
                 // add charts here
                 Text("Historical")
                     .font(.title)
