@@ -5,7 +5,7 @@
 //  Created by Joseph Nevado on 2022-09-14.
 //
 
-// nested sheetview inside of exerciseSheetView needs a binding variable that holds weight, sets, reps etc 
+// nested sheetview inside of exerciseSheetView needs a binding variable that holds weight, sets, reps etc
 
 import SwiftUI
 import Charts
@@ -17,6 +17,9 @@ struct ExerciseSheetView: View {
     @State private var sets: Int64 = 0
     @State private var weight: Double = 0
     
+    @State private var weightDisplay = false
+    @State private var weightConfirm = false
+    
     var body: some View {
         NavigationStack{
             List{
@@ -25,15 +28,36 @@ struct ExerciseSheetView: View {
                         Text("Weight")
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
-                        Text("\(exercise.weight, specifier: "%.2f") lbs")
+                        Text("\(weight, specifier: "%.2f") lbs")
                             .font(.title3)
                             .fontWeight(.bold)
+                        
+                        if(weightDisplay){
+                            Slider(
+                                value: $weight,
+                                in:0...300,
+                                step: 0.25,
+                                onEditingChanged: { editing in
+                                    weightConfirm = true
+                                    
+                                    if(weight == exercise.weight){
+                                        weightConfirm = false
+                                    }
+                                }
+                            )
+                        }
                     }
                     .padding()
                 } header: {
                     Text("Details")
                 }
                 .headerProminence(.increased)
+                .onAppear{
+                    weight = exercise.weight
+                }
+                .onTapGesture {
+                    weightDisplay = true
+                }
                 
                 Section{
                     VStack(alignment: .leading){
@@ -72,6 +96,8 @@ struct ExerciseSheetView: View {
                 }
                 .headerProminence(.increased)
             }
+            
+            
         }
     }
 }

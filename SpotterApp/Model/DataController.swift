@@ -62,6 +62,7 @@ class DataController: ObservableObject{
     }
     
     
+    // might need to separate this function because this will make a history entry when changing reps/sets/name
     func editExercise(exercise: Exercise, name: String, weight: Double, reps: Int64, sets: Int64, context: NSManagedObjectContext){
         exercise.name = name
         exercise.weight = weight

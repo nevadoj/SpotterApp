@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		012A45BC28FDEB1700737AE1 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012A45BB28FDEB1700737AE1 /* PrimaryButton.swift */; };
 		012C722D28ECB27900F740E0 /* WorkoutModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 012C722B28ECB27900F740E0 /* WorkoutModel.xcdatamodeld */; };
 		012C722F28ECB28600F740E0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012C722E28ECB28600F740E0 /* DataController.swift */; };
+		013076CA294587F1008C16FE /* SampleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013076C9294587F1008C16FE /* SampleSlider.swift */; };
 		013F594228D28F62005CC820 /* SpotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F594128D28F62005CC820 /* SpotterApp.swift */; };
 		013F594428D28F62005CC820 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F594328D28F62005CC820 /* ContentView.swift */; };
 		013F594628D28F63005CC820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 013F594528D28F63005CC820 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		0146446428FDFD0B009E30F6 /* HomeViewAlternate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146446328FDFD0B009E30F6 /* HomeViewAlternate.swift */; };
 		0165A970293D589A00ADCAC9 /* EmptyCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0165A96F293D589A00ADCAC9 /* EmptyCanvas.swift */; };
 		0174A51C28DD744B00E92B40 /* ExerciseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */; };
+		0183B6AC294470CF008D8C80 /* EditWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0183B6AB294470CF008D8C80 /* EditWeightView.swift */; };
 		018960AB292B16D400BA1BF4 /* EditExercisePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018960AA292B16D400BA1BF4 /* EditExercisePicker.swift */; };
 		0193D8AE2919C64800256DC7 /* RepsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0193D8AD2919C64800256DC7 /* RepsCard.swift */; };
 		019F2B19293A9EDE00AED374 /* TestPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019F2B18293A9EDE00AED374 /* TestPicker.swift */; };
@@ -42,6 +44,7 @@
 		012A45BB28FDEB1700737AE1 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		012C722C28ECB27900F740E0 /* WorkoutModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WorkoutModel.xcdatamodel; sourceTree = "<group>"; };
 		012C722E28ECB28600F740E0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		013076C9294587F1008C16FE /* SampleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSlider.swift; sourceTree = "<group>"; };
 		013F593E28D28F62005CC820 /* SpotterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpotterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		013F594128D28F62005CC820 /* SpotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotterApp.swift; sourceTree = "<group>"; };
 		013F594328D28F62005CC820 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		0146446328FDFD0B009E30F6 /* HomeViewAlternate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewAlternate.swift; sourceTree = "<group>"; };
 		0165A96F293D589A00ADCAC9 /* EmptyCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCanvas.swift; sourceTree = "<group>"; };
 		0174A51B28DD744B00E92B40 /* ExerciseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseItemView.swift; sourceTree = "<group>"; };
+		0183B6AB294470CF008D8C80 /* EditWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWeightView.swift; sourceTree = "<group>"; };
 		018960AA292B16D400BA1BF4 /* EditExercisePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExercisePicker.swift; sourceTree = "<group>"; };
 		0193D8AD2919C64800256DC7 /* RepsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsCard.swift; sourceTree = "<group>"; };
 		019F2B18293A9EDE00AED374 /* TestPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPicker.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				01D81A5028EE9E13002D408A /* ProgramSheetView.swift */,
 				0146446328FDFD0B009E30F6 /* HomeViewAlternate.swift */,
 				0165A96F293D589A00ADCAC9 /* EmptyCanvas.swift */,
+				0183B6AB294470CF008D8C80 /* EditWeightView.swift */,
+				013076C9294587F1008C16FE /* SampleSlider.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,7 +202,7 @@
 				};
 			};
 			buildConfigurationList = 013F593928D28F62005CC820 /* Build configuration list for PBXProject "SpotterApp" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -250,7 +256,9 @@
 				0193D8AE2919C64800256DC7 /* RepsCard.swift in Sources */,
 				010B508728D53003003FEAD0 /* Sheet.swift in Sources */,
 				0165A970293D589A00ADCAC9 /* EmptyCanvas.swift in Sources */,
+				0183B6AC294470CF008D8C80 /* EditWeightView.swift in Sources */,
 				0146446028FDF81F009E30F6 /* Extensions.swift in Sources */,
+				013076CA294587F1008C16FE /* SampleSlider.swift in Sources */,
 				013F594228D28F62005CC820 /* SpotterApp.swift in Sources */,
 				012A45BC28FDEB1700737AE1 /* PrimaryButton.swift in Sources */,
 				013F595828D29496005CC820 /* ExerciseSheetView.swift in Sources */,
