@@ -5,8 +5,6 @@
 //  Created by Joseph Nevado on 2022-09-14.
 //
 
-// nested sheetview inside of exerciseSheetView needs a binding variable that holds weight, sets, reps etc
-
 import SwiftUI
 import Charts
 
@@ -23,14 +21,30 @@ struct ExerciseSheetView: View {
     var body: some View {
         NavigationStack{
             List{
+                // Weight section
                 Section{
                     VStack(alignment: .leading){
                         Text("Weight")
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
-                        Text("\(weight, specifier: "%.2f") lbs")
-                            .font(.title3)
-                            .fontWeight(.bold)
+                        HStack{
+                            Text("\(weight, specifier: "%.2f") lbs")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Spacer()
+                            Image(systemName: "pencil")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.secondary)
+                                .padding(.bottom)
+                                .onTapGesture {
+                                    weightDisplay.toggle()
+                                    if(!weightDisplay){
+                                        weightConfirm = false
+                                    }
+                                }
+
+                        }
                         
                         if(weightDisplay){
                             Slider(
@@ -45,6 +59,13 @@ struct ExerciseSheetView: View {
                                     }
                                 }
                             )
+                            
+                            if(weightConfirm){
+                                Button("Done"){
+                                    weightDisplay = false
+                                    weightConfirm = false
+                                }
+                            }
                         }
                     }
                     .padding()
@@ -55,10 +76,8 @@ struct ExerciseSheetView: View {
                 .onAppear{
                     weight = exercise.weight
                 }
-                .onTapGesture {
-                    weightDisplay = true
-                }
                 
+                // Reps section
                 Section{
                     VStack(alignment: .leading){
                         Text("Reps")
@@ -71,6 +90,7 @@ struct ExerciseSheetView: View {
                     .padding()
                 }
                 
+                // Sets section
                 Section{
                     VStack(alignment: .leading){
                         Text("Sets")
@@ -83,6 +103,7 @@ struct ExerciseSheetView: View {
                     .padding()
                 }
                 
+                // Charts section
                 Section{
                     Chart(exercise.information?.array as! [History], id:\.self){ history in
                         LineMark(
