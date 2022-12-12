@@ -42,6 +42,11 @@ class DataController: ObservableObject{
         save(context: context)
     }
     
+    func deleteHistory(history: History, context: NSManagedObjectContext){
+        context.delete(history)
+        save(context: context)
+    }
+    
     func addExercise(name: String, weight: Double, reps: Int64, sets: Int64, program: Program, context: NSManagedObjectContext){
         let newExercise = Exercise(context: context)
         newExercise.id = UUID()
@@ -70,6 +75,13 @@ class DataController: ObservableObject{
         exercise.sets = sets
         
         let updatedAt = Date()
+        var topDate = exercise.information?.array.last as! History
+        
+        if(topDate.date!.getFormattedDate(format: "MMM dd, yyyy") == updatedAt.getFormattedDate(format: "MMM dd, yyyy")){
+            // insert at array.top() index
+            deleteHistory(history: topDate, context: context)
+        }
+        
         addHistory(exercise: exercise, weight: weight, reps: reps, date: updatedAt, context: context)
         
         save(context: context)

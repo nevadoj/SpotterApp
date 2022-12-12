@@ -9,6 +9,7 @@ import SwiftUI
 import Charts
 
 struct ExerciseSheetView: View {
+    @Environment (\.managedObjectContext) var viewContext
     
     var exercise: FetchedResults<Exercise>.Element
     @State private var reps: Int64 = 0
@@ -62,6 +63,7 @@ struct ExerciseSheetView: View {
                             
                             if(weightConfirm){
                                 Button("Done"){
+                                    DataController().editExercise(exercise: exercise, name: exercise.name ?? "Exercise", weight: weight, reps: reps, sets: sets, context: viewContext)
                                     weightDisplay = false
                                     weightConfirm = false
                                 }
@@ -107,7 +109,7 @@ struct ExerciseSheetView: View {
                 Section{
                     Chart(exercise.information?.array as! [History], id:\.self){ history in
                         LineMark(
-                            x: .value("Date", "\(history.date!.getFormattedDate(format: "MMMM yyyy"))"),
+                            x: .value("Date", "\(history.date!.getFormattedDate(format: "MMM d, yyyy"))"),
                             y: .value("Weight", history.weight)
                         )
                     }

@@ -30,7 +30,7 @@ struct ExerciseItemView: View {
                 }
             }
             Spacer()
-            Text("\(exercise.weight, specifier: "%.1f") lbs")
+            Text("\(exercise.weight, specifier: "%.2f") lbs")
                 .padding(.trailing)
                 .fontWeight(.semibold)
                 .font(.callout)
