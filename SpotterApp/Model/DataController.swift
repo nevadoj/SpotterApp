@@ -68,14 +68,13 @@ class DataController: ObservableObject{
     
     
     // might need to separate this function because this will make a history entry when changing reps/sets/name
-    func editExercise(exercise: Exercise, name: String, weight: Double, reps: Int64, sets: Int64, context: NSManagedObjectContext){
-        exercise.name = name
+    func editExercise(exercise: Exercise, weight: Double, reps: Int64, sets: Int64, context: NSManagedObjectContext){
         exercise.weight = weight
         exercise.reps = reps
         exercise.sets = sets
         
         let updatedAt = Date()
-        var topDate = exercise.information?.array.last as! History
+        let topDate = exercise.information?.array.last as! History
         
         if(topDate.date!.getFormattedDate(format: "MMM dd, yyyy") == updatedAt.getFormattedDate(format: "MMM dd, yyyy")){
             // insert at array.top() index

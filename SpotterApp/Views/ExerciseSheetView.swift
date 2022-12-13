@@ -19,6 +19,26 @@ struct ExerciseSheetView: View {
     @State private var weightDisplay = false
     @State private var weightConfirm = false
     
+    @State private var repsDisplay = false
+    @State private var repsConfirm = false
+    var repsProxy: Binding<Double>{
+        Binding<Double>(get: {
+            return Double(reps)
+        }, set: {
+            reps = Int64($0)
+        })
+    }
+    
+    @State private var setsDisplay = false
+    @State private var setsConfirm = false
+    var setsProxy: Binding<Double>{
+        Binding<Double>(get: {
+            return Double(sets)
+        }, set: {
+            sets = Int64($0)
+        })
+    }
+    
     var body: some View {
         NavigationStack{
             List{
@@ -63,7 +83,7 @@ struct ExerciseSheetView: View {
                             
                             if(weightConfirm){
                                 Button("Done"){
-                                    DataController().editExercise(exercise: exercise, name: exercise.name ?? "Exercise", weight: weight, reps: reps, sets: sets, context: viewContext)
+                                    DataController().editExercise(exercise: exercise, weight: weight, reps: reps, sets: sets, context: viewContext)
                                     weightDisplay = false
                                     weightConfirm = false
                                 }
@@ -85,11 +105,61 @@ struct ExerciseSheetView: View {
                         Text("Reps")
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
-                        Text("\(exercise.reps) reps")
-                            .font(.title3)
-                            .fontWeight(.bold)
+                        HStack{
+                            Text("\(reps) reps")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Spacer()
+                            Image(systemName: "pencil")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.secondary)
+                                .padding(.bottom)
+                                .onTapGesture {
+                                    repsDisplay.toggle()
+                                    if(!repsDisplay){
+                                        repsConfirm = false
+                                    }
+                                }
+                        }
+                        
+                        if(repsDisplay){
+                            Slider(
+                                value: repsProxy,
+                                in:0...20,
+                                step: 1,
+                                label: {
+                                    Text("Reps")
+                                },
+                                minimumValueLabel: {
+                                    Text("0")
+                                },
+                                maximumValueLabel: {
+                                    Text("20")
+                                },
+                                onEditingChanged: { editing in
+                                    repsConfirm = true
+                                    
+                                    if(reps ==  exercise.reps){
+                                        repsConfirm = false
+                                    }
+                                }
+                            )
+                            
+                            
+                            if(repsConfirm){
+                                Button("Done"){
+                                    DataController().editExercise(exercise: exercise, weight: weight, reps: reps, sets: sets, context: viewContext)
+                                    repsDisplay = false
+                                    repsConfirm = false
+                                }
+                            }
+                        }
                     }
                     .padding()
+                    .onAppear{
+                        reps = exercise.reps
+                    }
                 }
                 
                 // Sets section
@@ -98,14 +168,66 @@ struct ExerciseSheetView: View {
                         Text("Sets")
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
-                        Text("\(exercise.sets) sets")
-                            .font(.title3)
-                            .fontWeight(.bold)
+                        HStack{
+                            Text("\(sets) sets")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Spacer()
+                            Image(systemName: "pencil")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.secondary)
+                                .padding(.bottom)
+                                .onTapGesture {
+                                    setsDisplay.toggle()
+                                    if(!setsDisplay){
+                                        setsConfirm = false
+                                    }
+                                }
+                        }
+                        
+                        if(setsDisplay){
+                            Slider(
+                                value: setsProxy,
+                                in:0...10,
+                                step: 1,
+                                label:{
+                                    Text("Sets")
+                                },
+                                minimumValueLabel: {
+                                    Text("0")
+                                        .foregroundColor(.secondary)
+                                },
+                                maximumValueLabel: {
+                                    Text("10")
+                                        .foregroundColor(.secondary)
+                                },
+                                onEditingChanged: { editing in
+                                    setsConfirm = true
+                                    
+                                    if(sets == exercise.sets){
+                                        setsConfirm = false
+                                    }
+                                }
+                            )
+                            
+                            if(setsConfirm){
+                                Button("Done"){
+                                    DataController().editExercise(exercise: exercise, weight: weight, reps: reps, sets: sets, context: viewContext)
+                                    setsDisplay = false
+                                    setsConfirm = false
+                                }
+                            }
+                        }
                     }
                     .padding()
+                    .onAppear{
+                        sets = exercise.sets
+                    }
                 }
                 
                 // Charts section
+                // todo: update appearance
                 Section{
                     Chart(exercise.information?.array as! [History], id:\.self){ history in
                         LineMark(
