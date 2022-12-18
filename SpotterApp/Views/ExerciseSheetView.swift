@@ -15,6 +15,7 @@ struct ExerciseSheetView: View {
     @State private var reps: Int64 = 0
     @State private var sets: Int64 = 0
     @State private var weight: Double = 0
+    @State private var currentTab: String = "Weight"
     
     @State private var weightDisplay = false
     @State private var weightConfirm = false
@@ -227,22 +228,59 @@ struct ExerciseSheetView: View {
                 }
                 
                 // Charts section
-                // todo: update appearance
+                // todo: update appearance, add picker
                 Section{
-                    Chart(exercise.information?.array as! [History], id:\.self){ history in
-                        LineMark(
-                            x: .value("Date", "\(history.date!.getFormattedDate(format: "MMM d, yyyy"))"),
-                            y: .value("Weight", history.weight)
-                        )
+                    VStack{
+                        Picker("", selection: $currentTab){
+                            Text("Weight")
+                                .tag("Weight")
+                            Text("Reps")
+                                .tag("Reps")
+                        }
+                        .pickerStyle(.segmented)
+                        
+                        Chart(exercise.information?.array as! [History], id:\.self){ history in
+                            // MARK: switch() on $currentTab
+                            switch currentTab{
+                            case "Reps":
+                                LineMark(
+                                    x: .value("Date", "\(history.date!.getFormattedDate(format: "MMM d, yyyy"))"),
+                                    y: .value("Weight", history.reps)
+                                )
+                                .foregroundStyle(.yellow.gradient)
+                                
+                                PointMark(
+                                    x: .value("Date", "\(history.date!.getFormattedDate(format: "MMM d, yyyy"))"),
+                                    y: .value("Weight", history.reps)
+                                )
+                                .foregroundStyle(.yellow.gradient)
+                            default:
+                                LineMark(
+                                    x: .value("Date", "\(history.date!.getFormattedDate(format: "MMM d, yyyy"))"),
+                                    y: .value("Weight", history.weight)
+                                )
+                                .foregroundStyle(Color("AccentColor").gradient)
+                                
+                                PointMark(
+                                    x: .value("Date", "\(history.date!.getFormattedDate(format: "MMM d, yyyy"))"),
+                                    y: .value("Weight", history.weight)
+                                )
+                                .foregroundStyle(Color("AccentColor").gradient)
+                            }
+                
+                        }
+                        .chartYAxisLabel(position: .trailing){
+                            Text(currentTab == "Weight" ? "Weight (lbs)" : "Reps")
+                                .foregroundColor(.primary)
+                        }
+                        .frame(height: 350)
                     }
-                    .frame(height: 300)
+    
                 } header: {
                     Text("Historical")
                 }
                 .headerProminence(.increased)
             }
-            
-            
         }
     }
 }

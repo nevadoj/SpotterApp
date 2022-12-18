@@ -182,6 +182,8 @@
 			dependencies = (
 			);
 			name = SpotterApp;
+			packageProductDependencies = (
+			);
 			productName = SpotterApp;
 			productReference = 013F593E28D28F62005CC820 /* SpotterApp.app */;
 			productType = "com.apple.product-type.application";
@@ -210,6 +212,8 @@
 				Base,
 			);
 			mainGroup = 013F593528D28F62005CC820;
+			packageReferences = (
+			);
 			productRefGroup = 013F593F28D28F62005CC820 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
