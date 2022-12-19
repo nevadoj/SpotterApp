@@ -17,7 +17,7 @@ struct ExerciseItemView: View {
         HStack{
             Text(Image(systemName: "circlebadge"))
             VStack(alignment: .leading){
-                Text(exercise.name!)
+                Text(exercise.name ?? "Exercise")
                     .font(.callout)
                     .fontWeight(.semibold)
                 HStack{

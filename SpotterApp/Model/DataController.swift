@@ -87,6 +87,13 @@ class DataController: ObservableObject{
     }
     
     // todo: deleteExercise
+    func deleteExercise(exercise: Exercise, context: NSManagedObjectContext){
+        exercise.program?.size -= 1
+        exercise.program?.working_sets -= exercise.sets
+        
+        context.delete(exercise)
+        save(context: context)
+    }
     
     func addProgram(name: String, context: NSManagedObjectContext){
         let newProgram = Program(context: context)

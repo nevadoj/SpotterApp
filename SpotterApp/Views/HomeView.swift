@@ -32,10 +32,11 @@ struct HomeView: View {
                                                 }
                                                 .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                                     Button(){
-                                                        Swift.print(exercise.name!) // need to add function deleteExercise
+                                                        DataController().deleteExercise(exercise: exercise, context: viewContext)
                                                     } label:{
                                                         Label("Delete2", systemImage: "trash")
                                                     }
+                                                    .tint(.red)
                                                 }
                                         }
                                     }
@@ -66,7 +67,6 @@ struct HomeView: View {
                                                 .foregroundColor(.secondary)
                                         }
                                     }
-                                    // Need to find method or re-design a way to edit programs (if a user is wrong the first time, they delete? -- push editing back)
                                     .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                         Button{
                                             Swift.print("\(program.name!)")
@@ -83,6 +83,7 @@ struct HomeView: View {
                                         } label: {
                                             Label("Delete Routine", systemImage: "trash")
                                         }
+                                        .tint(.red)
                                     }
                                 }
                             } // end of ForEach
@@ -125,13 +126,15 @@ struct HomeView: View {
         }
     }
     
-    private func deleteProgram(_ program: FetchedResults<Program>.Element){ // crashes the program if press "Add program" after deleting a program
+    private func deleteProgram(_ program: FetchedResults<Program>.Element){ // crashes the program if press "Add program" after deleting a program -- December 19, this crash doesnt happen
         withAnimation{
             viewContext.delete(program)
             DataController().save(context: viewContext)
         }
     }
 }
+
+// MARK: maybe charts section showing progress on all exercises per workout 
 
 //struct HomeView_Previews: PreviewProvider {
 //    static var previews: some View {
