@@ -231,13 +231,14 @@ struct ExerciseSheetView: View {
                 // todo: update appearance, add picker
                 Section{
                     VStack{
-                        Picker("", selection: $currentTab){
+                        Picker("", selection: $currentTab.animation(.spring())){
                             Text("Weight")
                                 .tag("Weight")
                             Text("Reps")
                                 .tag("Reps")
                         }
                         .pickerStyle(.segmented)
+                        .padding()
                         
                         Chart(exercise.information?.array as! [History], id:\.self){ history in
                             // MARK: switch() on $currentTab
@@ -273,7 +274,7 @@ struct ExerciseSheetView: View {
                             Text(currentTab == "Weight" ? "Weight (lbs)" : "Reps")
                                 .foregroundColor(.primary)
                         }
-                        .frame(height: 350)
+                        .frame(height: 300)
                     }
     
                 } header: {

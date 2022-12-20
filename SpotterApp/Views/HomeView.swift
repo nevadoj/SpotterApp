@@ -23,71 +23,74 @@ struct HomeView: View {
                     VStack{
                         List{
                             ForEach(programs){ program in
-                                DisclosureGroup{
-                                    if program.size > 0{
-                                        ForEach(program.exercises?.array as! [Exercise], id: \.self){ exercise in
-                                            ExerciseItemView(exercise: exercise)
-                                                .onTapGesture {
-                                                    exerciseDisplay = exercise
-                                                }
-                                                .swipeActions(edge: .trailing, allowsFullSwipe: false){
-                                                    Button(){
-                                                        DataController().deleteExercise(exercise: exercise, context: viewContext)
-                                                    } label:{
-                                                        Label("Delete2", systemImage: "trash")
+                                Section{
+                                    DisclosureGroup{
+                                        if program.size > 0{
+                                            ForEach(program.exercises?.array as! [Exercise], id: \.self){ exercise in
+                                                ExerciseItemView(exercise: exercise)
+                                                    .onTapGesture {
+                                                        exerciseDisplay = exercise
                                                     }
-                                                    .tint(.red)
-                                                }
+                                                    .swipeActions(edge: .trailing, allowsFullSwipe: false){
+                                                        Button(){
+                                                            DataController().deleteExercise(exercise: exercise, context: viewContext)
+                                                        } label:{
+                                                            Label("Delete2", systemImage: "trash")
+                                                        }
+                                                        .tint(.red)
+                                                    }
+                                            }
                                         }
-                                    }
-                                    else{
-                                        withAnimation{
-                                            HStack{
-                                                VStack(alignment: .leading){
-                                                    Text("No exercises added")
-                                                        .font(.callout)
-                                                        .fontWeight(.semibold)
-                                                        .foregroundColor(.secondary)
+                                        else{
+                                            withAnimation{
+                                                HStack{
+                                                    VStack(alignment: .leading){
+                                                        Text("No exercises added")
+                                                            .font(.callout)
+                                                            .fontWeight(.semibold)
+                                                            .foregroundColor(.secondary)
+                                                    }
                                                 }
                                             }
                                         }
-                                    }
-                                } label: {
-                                    VStack(alignment: .leading){
-                                        Text(program.name!)
-                                            .font(.body)
-                                            .fontWeight(.bold)
-                                            .padding(.vertical)
-                                        HStack(alignment: .firstTextBaseline){
-                                            Text("Working Sets: \(program.working_sets)")
-                                                .font(.footnote)
-                                                .foregroundColor(.secondary)
-                                            Text("Exercises: \(program.size)")
-                                                .font(.footnote)
-                                                .foregroundColor(.secondary)
+                                    } label: {
+                                        VStack(alignment: .leading){
+                                            Text(program.name!)
+                                                .font(.body)
+                                                .fontWeight(.bold)
+                                                .padding(.vertical)
+                                            HStack(alignment: .firstTextBaseline){
+                                                Text("Working Sets: \(program.working_sets)")
+                                                    .font(.footnote)
+                                                    .foregroundColor(.secondary)
+                                                Text("Exercises: \(program.size)")
+                                                    .font(.footnote)
+                                                    .foregroundColor(.secondary)
+                                            }
                                         }
-                                    }
-                                    .swipeActions(edge: .trailing, allowsFullSwipe: false){
-                                        Button{
-                                            Swift.print("\(program.name!)")
-                                            Swift.print("\(program.id!)")
-                                            targetProgram = program
-                                        } label:{
-                                            Label("", systemImage: "plus")
+                                        .swipeActions(edge: .trailing, allowsFullSwipe: false){
+                                            Button{
+                                                Swift.print("\(program.name!)")
+                                                Swift.print("\(program.id!)")
+                                                targetProgram = program
+                                            } label:{
+                                                Label("", systemImage: "plus")
+                                            }
+                                            .tint(.green)
                                         }
-                                        .tint(.green)
-                                    }
-                                    .contextMenu{
-                                        Button(role: .destructive){
-                                            deleteProgram(program)
-                                        } label: {
-                                            Label("Delete Routine", systemImage: "trash")
+                                        .contextMenu{
+                                            Button(role: .destructive){
+                                                deleteProgram(program)
+                                            } label: {
+                                                Label("Delete Routine", systemImage: "trash")
+                                            }
+                                            .tint(.red)
                                         }
-                                        .tint(.red)
                                     }
                                 }
                             } // end of ForEach
                         } // end of List
+                        .listStyle(.insetGrouped)
                         .navigationTitle("Programs")
                         .sheet(item: $exerciseDisplay){ exerciseDisplay in
                             NavigationView{
