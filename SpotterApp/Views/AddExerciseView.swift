@@ -23,6 +23,8 @@ struct AddExerciseView: View {
     @State private var weight: Double = 0
     @State private var showButton = false
     
+    @State private var currentWeight: String = "100"
+    
     var body: some View {
         VStack(alignment: .leading){
             Form{
@@ -37,14 +39,65 @@ struct AddExerciseView: View {
                 }
                 
                 Section("Weight"){
-                    Text("\(weight, specifier: "%.1f") lbs")
-                    Slider(value: $weight, in:0...500, step: 0.5)
+                    VStack(alignment: .leading){ // maybe separate this into a different file
+                        Picker("", selection: $currentWeight.animation(.spring())){
+                            Text("100")
+                                .tag("100")
+                            Text("10")
+                                .tag("10")
+                            Text("5")
+                                .tag("5")
+                            Text("0.25")
+                                .tag("0.25")
+                        }
+                        .pickerStyle(.segmented)
+                        .padding(.top)
+                        
+                        switch currentWeight{
+                        case "10":
+                            Stepper(value: $weight, in:0...1000, step: 10){
+                                Text("\(weight, specifier: "%.2f") lbs")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                            }
+                            .padding()
+                        case "5":
+                            Stepper(value: $weight, in:0...1000, step: 5){
+                                Text("\(weight, specifier: "%.2f") lbs")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                            }
+                            .padding()
+                        case "0.25":
+                            Stepper(value: $weight, in:0...1000, step: 0.25){
+                                Text("\(weight, specifier: "%.2f") lbs")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                            }
+                            .padding()
+                        default:
+                            Stepper(value: $weight, in:0...1000, step: 100){
+                                Text("\(weight, specifier: "%.2f") lbs")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                            }
+                            .padding()
+                        }
+                    }
                 }
+                
                 Section("Reps"){
                     Stepper("\(reps)", value: $reps, in:0...100)
+                        .padding()
+                        .font(.title3)
+                        .fontWeight(.semibold)
                 }
+                
                 Section("Sets"){
                     Stepper("\(sets)", value: $sets, in:0...100)
+                        .padding()
+                        .font(.title3)
+                        .fontWeight(.semibold)
                 }
                 
                 if(showButton){

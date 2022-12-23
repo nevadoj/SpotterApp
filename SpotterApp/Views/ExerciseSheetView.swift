@@ -16,6 +16,7 @@ struct ExerciseSheetView: View {
     @State private var sets: Int64 = 0
     @State private var weight: Double = 0
     @State private var currentTab: String = "Weight"
+    @State private var currentWeight: String = "100"
     
     @State private var weightDisplay = false
     @State private var weightConfirm = false
@@ -69,19 +70,98 @@ struct ExerciseSheetView: View {
                         }
                         
                         if(weightDisplay){
-                            Slider(
-                                value: $weight,
-                                in:0...300,
-                                step: 0.25,
-                                onEditingChanged: { editing in
-                                    weightConfirm = true
-                                    
-                                    if(weight == exercise.weight){
-                                        weightConfirm = false
-                                    }
-                                }
-                            )
+                            Picker("", selection: $currentWeight){
+                                Text("100")
+                                    .tag("100")
+                                Text("10")
+                                    .tag("10")
+                                Text("5")
+                                    .tag("5")
+                                Text("0.25")
+                                    .tag("0.25")
+                            }
+                            .pickerStyle(.segmented)
                             
+                            switch currentWeight{
+                            case "10":
+                                Stepper(
+                                    value: $weight,
+                                    in:0...1000,
+                                    step: 10,
+                                    onEditingChanged: { editing in
+                                        weightConfirm = true
+                                        
+                                        if(weight == exercise.weight){
+                                            weightConfirm = false
+                                        }
+                                    }
+                                ){
+                                    Text("Adjust Weight")
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding()
+                            case "5":
+                                Stepper(
+                                    value: $weight,
+                                    in:0...1000,
+                                    step: 5,
+                                    onEditingChanged: { editing in
+                                        weightConfirm = true
+                                        
+                                        if(weight == exercise.weight){
+                                            weightConfirm = false
+                                        }
+                                    }
+                                ){
+                                    Text("Adjust Weight")
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding()
+                            case "0.25":
+                                Stepper(
+                                    value: $weight,
+                                    in:0...1000,
+                                    step: 0.25,
+                                    onEditingChanged: { editing in
+                                        weightConfirm = true
+                                        
+                                        if(weight == exercise.weight){
+                                            weightConfirm = false
+                                        }
+                                    }
+                                ){
+                                    Text("Adjust Weight")
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding()
+                            default:
+                                Stepper(
+                                    value: $weight,
+                                    in:0...1000,
+                                    step: 100,
+                                    onEditingChanged: { editing in
+                                        weightConfirm = true
+                                        
+                                        if(weight == exercise.weight){
+                                            weightConfirm = false
+                                        }
+                                    }
+                                ){
+                                    Text("Adjust Weight")
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding()
+                            }
+                            
+                            // MARK: Adjust button style (maybe custom pill shape)
                             if(weightConfirm){
                                 Button("Done"){
                                     DataController().editExercise(exercise: exercise, weight: weight, reps: reps, sets: sets, context: viewContext)
