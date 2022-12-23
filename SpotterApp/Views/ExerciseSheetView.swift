@@ -65,6 +65,9 @@ struct ExerciseSheetView: View {
                                     if(!weightDisplay){
                                         weightConfirm = false
                                     }
+                                    if(weight != exercise.weight){
+                                        weight = exercise.weight
+                                    }
                                 }
 
                         }
@@ -201,6 +204,10 @@ struct ExerciseSheetView: View {
                                     if(!repsDisplay){
                                         repsConfirm = false
                                     }
+                                    
+                                    if(reps != exercise.reps){
+                                        reps = exercise.reps
+                                    }
                                 }
                         }
                         
@@ -263,6 +270,10 @@ struct ExerciseSheetView: View {
                                     setsDisplay.toggle()
                                     if(!setsDisplay){
                                         setsConfirm = false
+                                    }
+                                    
+                                    if(sets != exercise.sets){
+                                        sets = exercise.sets
                                     }
                                 }
                         }
