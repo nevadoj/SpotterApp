@@ -40,7 +40,7 @@ struct AddExerciseView: View {
                 
                 Section("Weight"){
                     VStack(alignment: .leading){ // maybe separate this into a different file
-                        Picker("", selection: $currentWeight.animation(.spring())){
+                        Picker("", selection: $currentWeight){
                             Text("100")
                                 .tag("100")
                             Text("10")
@@ -53,36 +53,16 @@ struct AddExerciseView: View {
                         .pickerStyle(.segmented)
                         .padding(.top)
                         
-                        switch currentWeight{
-                        case "10":
-                            Stepper(value: $weight, in:0...1000, step: 10){
-                                Text("\(weight, specifier: "%.2f") lbs")
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
-                            }
-                            .padding()
-                        case "5":
-                            Stepper(value: $weight, in:0...1000, step: 5){
-                                Text("\(weight, specifier: "%.2f") lbs")
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
-                            }
-                            .padding()
-                        case "0.25":
-                            Stepper(value: $weight, in:0...1000, step: 0.25){
-                                Text("\(weight, specifier: "%.2f") lbs")
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
-                            }
-                            .padding()
-                        default:
-                            Stepper(value: $weight, in:0...1000, step: 100){
-                                Text("\(weight, specifier: "%.2f") lbs")
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
-                            }
-                            .padding()
+                        Stepper(
+                            value: $weight,
+                            in:0...1000,
+                            step: stepFromString(currentWeight)
+                        ){
+                            Text("\(weight, specifier: "%.2f") lbs")
+                                .font(.title3)
+                                .fontWeight(.semibold)
                         }
+                        .padding()
                     }
                 }
                 

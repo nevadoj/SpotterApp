@@ -12,6 +12,19 @@ extension View{
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View{
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
+    
+    func stepFromString(_ step: String) -> Double{
+        switch step{
+        case "10":
+            return 10
+        case "5":
+            return 5
+        case "0.25":
+            return 0.25
+        default:
+            return 100
+        }
+    }
 }
 
 extension Date{
